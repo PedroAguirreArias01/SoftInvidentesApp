@@ -1,3 +1,26 @@
-<p>
-  usuarios works!
-</p>
+<div class="card">
+  <div class="card-header">Usuarios</div>
+  <div class="card-bpdy text-primary">
+    <h1>Listado de usuarios</h1>
+    <table class="table table-border table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Correo</th>
+          <th>Usuario</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let usuario of usuarios">
+          <td>{{usuario.id}}</td>
+          <td>{{usuario.nombre}}  {{usuario.apellido}}</td>
+          <td>{{usuario.email}}</td>
+          <td>{{usuario.usuario}}</td>
+          <td>{{usuario.createAt}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
