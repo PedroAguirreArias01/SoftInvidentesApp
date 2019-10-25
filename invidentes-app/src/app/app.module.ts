@@ -8,9 +8,11 @@ import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import {UsuarioService} from './usuarios/usuario.service';
+import { PaginaPricipalComponent } from './pagina-pricipal/pagina-pricipal.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/usuarios', pathMatch: 'full'},
+  {path: '', redirectTo: '/paginaPrincipal', pathMatch: 'full'},
+  {path: 'paginaPrincipal', component: PaginaPricipalComponent},
   {path: 'usuarios', component: UsuariosComponent },
 
 ]
@@ -20,7 +22,8 @@ const routes: Routes = [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    PaginaPricipalComponent
   ],
   imports: [
     BrowserModule,
