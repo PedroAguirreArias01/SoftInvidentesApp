@@ -9,11 +9,15 @@ import {FooterComponent} from './footer/footer.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import {UsuarioService} from './usuarios/usuario.service';
 import { PaginaPricipalComponent } from './pagina-pricipal/pagina-pricipal.component';
+import { PqrsFormComponent } from './pqrs-form/pqrs-form.component';
+import { NormativaFormComponent } from './normativa-form/normativa-form.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/paginaPrincipal', pathMatch: 'full'},
   {path: 'paginaPrincipal', component: PaginaPricipalComponent},
   {path: 'usuarios', component: UsuariosComponent },
+  {path: 'pqrsForm', component: PqrsFormComponent},
+  {path: 'normativaForm', component: NormativaFormComponent}
 
 ]
 
@@ -23,7 +27,9 @@ const routes: Routes = [
     HeaderComponent,
     FooterComponent,
     UsuariosComponent,
-    PaginaPricipalComponent
+    PaginaPricipalComponent,
+    PqrsFormComponent,
+    NormativaFormComponent
   ],
   imports: [
     BrowserModule,
