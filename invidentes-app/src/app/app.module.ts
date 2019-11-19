@@ -11,6 +11,9 @@ import {UsuarioService} from './usuarios/usuario.service';
 import { PaginaPricipalComponent } from './pagina-pricipal/pagina-pricipal.component';
 import { PqrsFormComponent } from './pqrs-form/pqrs-form.component';
 import { NormativaFormComponent } from './normativa-form/normativa-form.component';
+//TODO
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/paginaPrincipal', pathMatch: 'full'},
@@ -29,10 +32,12 @@ const routes: Routes = [
     UsuariosComponent,
     PaginaPricipalComponent,
     PqrsFormComponent,
-    NormativaFormComponent
+    NormativaFormComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     RouterModule.forRoot(routes)
   ],
