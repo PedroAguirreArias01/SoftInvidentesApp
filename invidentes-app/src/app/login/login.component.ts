@@ -11,8 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  /**
+   * @description Contructor de la clase LoginComponent
+   */
   constructor() { }
 
+  /**
+   * @description Metdodo que se inicia cuando el componente es iniciado
+   * @author Pedro Aguirre Arias <pedro.aguirre@uptc.edu.co>
+   */
   ngOnInit() {
   }
 

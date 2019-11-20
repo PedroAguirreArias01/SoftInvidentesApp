@@ -6,8 +6,8 @@ import {RouterModule, Routes} from '@angular/router'
 import { AppComponent } from './app.component';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
-import { UsuariosComponent } from './usuarios/usuarios.component';
-import {UsuarioService} from './usuarios/usuario.service';
+import { ColaboradorComponent } from './colaborador/colaborador.component';
+import { ColaboradorService } from "./services/colaboradorService";
 import { PaginaPricipalComponent } from './pagina-pricipal/pagina-pricipal.component';
 import { PqrsFormComponent } from './pqrs-form/pqrs-form.component';
 import { NormativaFormComponent } from './normativa-form/normativa-form.component';
@@ -18,7 +18,7 @@ import { LoginComponent } from './login/login.component';
 const routes: Routes = [
   {path: '', redirectTo: '/paginaPrincipal', pathMatch: 'full'},
   {path: 'paginaPrincipal', component: PaginaPricipalComponent},
-  {path: 'usuarios', component: UsuariosComponent },
+  {path: 'usuarios', component: ColaboradorComponent },
   {path: 'pqrsForm', component: PqrsFormComponent},
   {path: 'normativaForm', component: NormativaFormComponent}
 
@@ -29,7 +29,7 @@ const routes: Routes = [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    UsuariosComponent,
+    ColaboradorComponent,
     PaginaPricipalComponent,
     PqrsFormComponent,
     NormativaFormComponent,
@@ -41,7 +41,7 @@ const routes: Routes = [
     AppRoutingModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [UsuarioService],
+  providers: [ColaboradorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
