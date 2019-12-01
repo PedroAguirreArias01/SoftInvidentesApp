@@ -43,6 +43,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
     HttpClientModule,
     NgxPaginationModule,
     AngularMaterial
+    
+  ],
+  exports: [
+    AngularMaterial  
   ],
   providers: [ColaboradorService],
   bootstrap: [AppComponent]

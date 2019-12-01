@@ -1,6 +1,10 @@
 <div class="container">
     <div class="card">
-        <div class="card-header">Crear Colaborador</div>
+        <div class="card-header text-primary">
+            <h1 matBadge="Colaborador" [matBadgeHidden]="visible">
+                Crear 
+            </h1>
+        </div>
         <div class="card-body">
             <form [formGroup]="gestionarColaboradorForm">
                 <div class="row">
@@ -48,19 +52,21 @@
                             <span class="text-danger" *ngIf="f.email.password.required">Campo requerido.</span>
                         </div>
                     </div>
-                    <!-- <div class="col-6">
+                    <div class="col-6">
                         <label for="nombreComic">Confirmar contraseña:</label>
                         <input type="password" class="form-control" id="password" formControlName="password"
                             [ngClass]="{ 'is-invalid': submitted && f.password.errors }" maxlength="8">
                         <div *ngIf="submitted && f.password.errors">
                             <span class="text-danger" *ngIf="f.nombre.password.required">Campo requerido.</span>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-6"></div>
                     <div class="col-6 text-right">
                         <button type="button" class="btn btn-primary" (click)="crearActualizar()">Crear/Editar</button>
+                        <!-- <button mat-button color="primary">Crear</button> -->
+
                     </div>
                 </div>
             </form>

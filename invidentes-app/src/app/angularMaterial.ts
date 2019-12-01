@@ -1,7 +1,44 @@
 import { NgModule } from '@angular/core';
 /*material */
 import {
-    MatAutocompleteModule,
+  MatAutocompleteModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatFormFieldModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatDividerModule,
+  MatExpansionModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatNativeDateModule,
+  MatPaginatorModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatSortModule,
+  MatStepperModule,
+  MatTableModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule,
+  MatBadgeModule, 
+} from '@angular/material';
+
+@NgModule({
+  imports: [MatAutocompleteModule,
     MatButtonModule,
     MatButtonToggleModule,
     MatFormFieldModule,
@@ -34,10 +71,9 @@ import {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-  } from '@angular/material';
-
-@NgModule({
-    imports: [MatAutocompleteModule,
+    MatBadgeModule
+  ],
+  exports: [MatAutocompleteModule,
     MatButtonModule,
     MatButtonToggleModule,
     MatFormFieldModule,
@@ -69,7 +105,7 @@ import {
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
-    MatTooltipModule],
-    exports: []
-  })
-  export class AngularMaterial { }
+    MatTooltipModule,
+    MatBadgeModule]
+})
+export class AngularMaterial { }
