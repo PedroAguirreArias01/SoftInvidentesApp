@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import {RouterModule, Routes} from '@angular/router'
+import {AngularMaterial} from './angularMaterial';
 import { AppComponent } from './app.component';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
@@ -14,15 +14,13 @@ import { NormativaFormComponent } from './normativa-form/normativa-form.componen
 //TODO
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
+import { ColaboradorFormComponent } from './colaborador/colaborador-form.component';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
-const routes: Routes = [
-  {path: '', redirectTo: '/paginaPrincipal', pathMatch: 'full'},
-  {path: 'paginaPrincipal', component: PaginaPricipalComponent},
-  {path: 'usuarios', component: ColaboradorComponent },
-  {path: 'pqrsForm', component: PqrsFormComponent},
-  {path: 'normativaForm', component: NormativaFormComponent}
-
-]
+//--------------paginado-------------------
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -33,13 +31,18 @@ const routes: Routes = [
     PaginaPricipalComponent,
     PqrsFormComponent,
     NormativaFormComponent,
-    LoginComponent
+    LoginComponent,
+    ColaboradorFormComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes)
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgxPaginationModule,
+    AngularMaterial
   ],
   providers: [ColaboradorService],
   bootstrap: [AppComponent]

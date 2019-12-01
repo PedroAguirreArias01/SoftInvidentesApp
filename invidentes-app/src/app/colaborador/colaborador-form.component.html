@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">Crear Colaborador</div>
+        <div class="card-body">
+            <form [formGroup]="gestionarColaboradorForm">
+                <div class="row">
+                    <div class="col-6">
+                        <label for="nombreComic">Nombres:</label>
+                        <input type="text" class="form-control" id="nombre" formControlName="nombre"
+                            [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }" maxlength="50">
+                        <div *ngIf="submitted && f.nombre.errors">
+                            <span class="text-danger" *ngIf="f.nombre.errors.required">Campo requerido.</span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <label for="nombreComic">Apellidos:</label>
+                        <input type="text" class="form-control" id="apellidoColaborador" formControlName="apellido"
+                            [ngClass]="{ 'is-invalid': submitted && f.apellido.errors }" maxlength="50">
+                        <div *ngIf="submitted && f.apellido.errors">
+                            <span class="text-danger" *ngIf="f.apellido.required">Campo requerido.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <label for="nombreComic">Correo:</label>
+                        <input type="email" class="form-control" id="email" formControlName="email"
+                            [ngClass]="{ 'is-invalid': submitted && f.email.errors }" maxlength="50">
+                        <div *ngIf="submitted && f.email.errors">
+                            <span class="text-danger" *ngIf="f.email.errors.required">Campo requerido.</span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <label for="nombreComic">Usuario:</label>
+                        <input type="text" class="form-control" id="usuario" formControlName="usuario"
+                            [ngClass]="{ 'is-invalid': submitted && f.usuario.errors }" maxlength="50">
+                        <div *ngIf="submitted && f.usuario.errors">
+                            <span class="text-danger" *ngIf="f.usuario.errors.required">Campo requerido.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <label for="nombreComic">Contraseña:</label>
+                        <input type="password" class="form-control" id="password" formControlName="password"
+                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" maxlength="8">
+                        <div *ngIf="submitted && f.password.errors">
+                            <span class="text-danger" *ngIf="f.email.password.required">Campo requerido.</span>
+                        </div>
+                    </div>
+                    <!-- <div class="col-6">
+                        <label for="nombreComic">Confirmar contraseña:</label>
+                        <input type="password" class="form-control" id="password" formControlName="password"
+                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" maxlength="8">
+                        <div *ngIf="submitted && f.password.errors">
+                            <span class="text-danger" *ngIf="f.nombre.password.required">Campo requerido.</span>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="row">
+                    <div class="col-sm-6"></div>
+                    <div class="col-6 text-right">
+                        <button type="button" class="btn btn-primary" (click)="crearActualizar()">Crear/Editar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer">Footer</div>
+    </div>
+</div>

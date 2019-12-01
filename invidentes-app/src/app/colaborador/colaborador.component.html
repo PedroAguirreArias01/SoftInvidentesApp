@@ -1,26 +1,34 @@
 <div class="card">
-  <div class="card-header">Usuarios</div>
-  <div class="card-bpdy text-primary">
-    <h1>Listado de usuarios</h1>
-    <table class="table table-border table-striped">
-      <thead>
+  <div class="card-header  text-primary">
+      <h1>Listado general de colaboradores</h1>
+  </div>
+  <div class="card-bpdy">
+    <table class="table table-striped">
+      <thead class="thead-dark">
         <tr>
           <th>Id</th>
           <th>Nombre</th>
           <th>Correo</th>
           <th>Usuario</th>
           <th>Fecha</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let usuario of usuarios">
+        <tr *ngFor="let usuario of colaboradores | paginate: { itemsPerPage: 7, currentPage: pageActual}">
           <td>{{usuario.id}}</td>
-          <td>{{usuario.nombre}}  {{usuario.apellido}}</td>
+          <td>{{usuario.nombre}} {{usuario.apellido}}</td>
           <td>{{usuario.email}}</td>
           <td>{{usuario.usuario}}</td>
           <td>{{usuario.createAt}}</td>
+          <td>
+            <button class="btn btn-success">Editar</button>
+            <button class="btn btn-danger">Eliminar</button>
+          </td>
         </tr>
       </tbody>
+      <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
     </table>
+    
   </div>
 </div>

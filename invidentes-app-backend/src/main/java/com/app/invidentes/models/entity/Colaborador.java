@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 /**
  * Clase colaborador que contiene los atributos del colaborador
@@ -15,7 +16,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name = "COLABORADOR")
+@Table(name = "COLABORADORES")
 public class Colaborador implements Serializable{
 	/**
 	 * 
@@ -40,7 +41,7 @@ public class Colaborador implements Serializable{
     /**
      * Atributo que representa la fecha de creacion del colaborador 
      */
-	@Column(name = "fecha_creacion")
+	@Column(name = "create_at")
     public LocalDate createAt;
     /**
      * Atributo que representa el email del colaborador
@@ -162,5 +163,65 @@ public class Colaborador implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-    
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((apellido == null) ? 0 : apellido.hashCode());
+		result = prime * result + ((createAt == null) ? 0 : createAt.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((usuario == null) ? 0 : usuario.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Colaborador other = (Colaborador) obj;
+		if (apellido == null) {
+			if (other.apellido != null)
+				return false;
+		} else if (!apellido.equals(other.apellido))
+			return false;
+		if (createAt == null) {
+			if (other.createAt != null)
+				return false;
+		} else if (!createAt.equals(other.createAt))
+			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (nombre == null) {
+			if (other.nombre != null)
+				return false;
+		} else if (!nombre.equals(other.nombre))
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
+		if (usuario == null) {
+			if (other.usuario != null)
+				return false;
+		} else if (!usuario.equals(other.usuario))
+			return false;
+		return true;
+	}
 }
