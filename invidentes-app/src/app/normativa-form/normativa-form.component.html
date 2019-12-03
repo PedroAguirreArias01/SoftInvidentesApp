@@ -4,25 +4,27 @@
             <h4>Gestión de información normativa</h4>
         </div>
         <div class="card-body">
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <label for="titulo">Titulo:</label>
-                        <input type="text" class="form-control" id="titulo" placeholder="Titulo">
-                    </div>
-                    <div class="col-lg-6">
-                        <label for="titulo">Tipo:</label>
-                        <input type="text" class="form-control" id="tipo" placeholder="Tipo">
-                    </div>
+            <form action="">
+                <div class="example-container">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Titulo</mat-label>
+                        <input matInput placeholder="Titulo">
+                        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                        <mat-hint>Titulo:</mat-hint>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <textarea matInput placeholder="Textarea"></textarea>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-select placeholder="Tipo de información">
+                            <mat-option value="option">Normativa</mat-option>
+                        </mat-select>
+                    </mat-form-field>
                 </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <label for="descripcion">Descripción detallada:</label>
-                        <textarea class="form-control" rows="8" id="comment"></textarea>
-                    </div>
-                </div>
-            </div>
-            <button type="button" class="btn btn-dark">ENVIAR COMENTARIO</button>
+                <button aria-label="Guardar" mat-raised-button color="primary">Aceptar</button>
+            </form>
         </div>
         <div class="card-footer">Footer</div>
     </div>

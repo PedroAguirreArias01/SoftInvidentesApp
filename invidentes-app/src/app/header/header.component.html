@@ -8,31 +8,31 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="paginaPrincipal">INICIO <span class="sr-only">(current)</span></a>
+          
+        <a class="nav-link" routerLink="paginaPrincipal">
+            <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>INICIO <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink = "normativaForm">NORMATIVIDAD</a>
+        <a class="nav-link" routerLink = "normativaForm">
+            <mat-icon>assignment</mat-icon>NORMATIVIDAD</a>
       </li>
       <!-- <li class="nav-item" routerLinkActive="active"> -->
         <li class="nav-item dropdown" routerLinkActive="active">
           <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-            USUARIOS
+              <mat-icon>group</mat-icon>USUARIOS
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" routerLink= "/cearColaborador">Crear Colaborador</a>
-            <a class="dropdown-item" routerLink="/colaboradores">Colaboradores</a>
+            <a class="dropdown-item" routerLink= "/cearColaborador"><mat-icon>group_add</mat-icon>Crear Colaborador</a>
+            <a class="dropdown-item" routerLink="/colaboradores"><mat-icon>group</mat-icon>Colaboradores</a>
           <!--   <a class="dropdown-item" href="#">Link 3</a> -->
           </div>
         <!-- </li> -->
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="pqrsForm">PQRS</a>
+        <a class="nav-link" routerLink="pqrsForm"><mat-icon>help</mat-icon>PQRS</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/usuarios">QUIENES SOMOS</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" href="#">AYUDA</a>
+        <a class="nav-link" routerLink="/usuarios"><mat-icon>info</mat-icon>QUIENES SOMOS</a>
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
