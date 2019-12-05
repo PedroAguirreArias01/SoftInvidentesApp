@@ -21,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 //--------------paginado-------------------
 import { NgxPaginationModule } from 'ngx-pagination';
+import { QuienesSomosComponent } from './quienes-somos/quienes-somos.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     PqrsFormComponent,
     NormativaFormComponent,
     LoginComponent,
-    ColaboradorFormComponent
+    ColaboradorFormComponent,
+    QuienesSomosComponent
   ],
   imports: [
     BrowserModule,
