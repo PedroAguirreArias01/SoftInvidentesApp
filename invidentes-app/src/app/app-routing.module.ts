@@ -5,6 +5,7 @@ import { ColaboradorComponent } from './colaborador/colaborador.component';
 import { PqrsFormComponent } from './pqrs-form/pqrs-form.component';
 import { NormativaFormComponent } from './normativa-form/normativa-form.component';
 import { ColaboradorFormComponent } from './colaborador/colaborador-form.component';
+import { QuienesSomosComponent } from './quienes-somos/quienes-somos.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path: 'colaboradores', component: ColaboradorComponent },
   {path: 'pqrsForm', component: PqrsFormComponent},
   {path: 'normativaForm', component: NormativaFormComponent},
-  {path: 'cearColaborador', component: ColaboradorFormComponent}
+  {path: 'cearColaborador', component: ColaboradorFormComponent},
+  {path: 'quienesSomos', component: QuienesSomosComponent}
 
 ]
 
