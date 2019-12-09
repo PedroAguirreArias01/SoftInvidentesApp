@@ -1,5 +1,8 @@
 package com.app.invidentes.models.entity;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -7,11 +10,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "NORMATIVIDAD")
-public class Normatividad {
+public class Normatividad implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	/**
 	 * Atributo que representa el id de la informacion
 	 */
@@ -21,18 +30,23 @@ public class Normatividad {
 	/**
 	 * Atributo que representa el titulo de la ley o decreto
 	 */
+	@Column(name="titulo")
 	private String titulo;
 	/**
 	 * Atributo que representa una pequennia descripcion de la informacion
 	 */
+	@Column(name="descripcion", length = 300)
+	@Size(min=10, max = 300)
 	private String descripcion;
 	/**
 	 * Atributo que representa el contenido total de la informacion
 	 */
+	@Column(name="contenido", length = 10000)
 	private String contenido;
 	/**
 	 * Atributo quue representa el tipo de informacion 
 	 */
+	@Column(name="tipo")
 	@Enumerated(value = EnumType.STRING)
 	private TipoNormativaEnum tipoNormativaEnum;
 	
@@ -43,10 +57,18 @@ public class Normatividad {
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * Metodo que obtiene el id de la norma
+	 * @return
+	 */
 	public Long getId() {
 		return id;
 	}
 
+	/**
+	 * Metodo que modifica el id de la norma
+	 * @param id
+	 */
 	public void setId(Long id) {
 		this.id = id;
 	}

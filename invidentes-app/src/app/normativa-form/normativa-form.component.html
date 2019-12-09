@@ -1,14 +1,14 @@
 <div class="container">
     <div class="card">
-        <div class="card-header">
+        <div class="card-header text-primary">
             <h4>Gestión de información normativa</h4>
         </div>
         <div class="card-body">
-            <form action="">
+            <form [formGroup]="gestionarNormatividadForm">
                 <div class="example-container">
                     <mat-form-field appearance="outline">
                         <mat-label>Titulo</mat-label>
-                        <input matInput placeholder="Titulo" aria-placeholder="Titulo norma o decreto">
+                        <input matInput placeholder="Titulo" aria-placeholder="Titulo norma o decreto" id="titulo" class="form-control"  formControlName="titulo">
                         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                         <mat-hint>Titulo:</mat-hint>
                     </mat-form-field>
@@ -16,23 +16,23 @@
                     <mat-form-field>
                         <mat-label>Descripcion detallada</mat-label>
                         <textarea matInput placeholder="Descripción de la norma o decreto"
-                            aria-placeholder="Descripción de la norma o decreto"></textarea>
+                            aria-placeholder="Descripción de la norma o decreto" id="descripcion" class="form-control"  formControlName="descripcion"></textarea>
                     </mat-form-field>
 
                     <mat-form-field>
-                        <mat-select placeholder="Tipo de información">
-                            <mat-option value="option">Leyes</mat-option>
-                            <mat-option value="option">Decretos</mat-option>
+                        <mat-select placeholder="Tipo de información" id="tipoNormativaEnum" formControlName="tipoNormativaEnum">
+                            <mat-option value="LEY">Ley</mat-option>
+                            <mat-option value="DECRETO">Decreto</mat-option>
                         </mat-select>
                     </mat-form-field>
 
                     <mat-form-field>
                             <mat-label>Información completa de la norma o decreto</mat-label>
                             <textarea matInput placeholder="Información completa de la norma o decreto"
-                                aria-placeholder="Información completa de la norma o decreto"></textarea>
+                                aria-placeholder="Información completa de la norma o decreto" id="contenido" class="form-control"  formControlName="contenido"></textarea>
                         </mat-form-field>
                 </div>
-                <button aria-label="Guardar" mat-raised-button color="primary">Aceptar</button>
+                <button aria-label="Guardar" mat-raised-button color="primary" (click)="crearActualizar()">Aceptar</button>
             </form>
         </div>
         <div class="card-footer">Footer</div>

@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.invidentes.models.entity.Normatividad;
 import com.app.invidentes.models.entity.ResultadoDTO;
+import com.app.invidentes.models.services.INormatividadService;
 import com.app.invidentes.models.services.NormatividadServiceImpl;
 
 @RestController
@@ -24,7 +26,7 @@ public class NormatividadRestController {
 	 * Inyeccion de dependencias 
 	 */
 	@Autowired
-	private NormatividadServiceImpl normatividadSer;
+	private INormatividadService normatividadSer;
 	
 	@GetMapping("/normatividad")
 	public List<Normatividad> findAll() {
@@ -33,7 +35,7 @@ public class NormatividadRestController {
 
 	@PostMapping("/normatividad")
 	@ResponseStatus(HttpStatus.CREATED)
-	public ResultadoDTO crear(Normatividad normatividad) {
+	public ResultadoDTO crear(@RequestBody Normatividad normatividad) {
 		 return normatividadSer.crear(normatividad);
 	}
 

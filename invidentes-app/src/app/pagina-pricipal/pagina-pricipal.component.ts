@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NormatividadDTO } from '../dto/normatividad.dto';
+import { NormatividadService } from '../services/normatividad.service';
 
 @Component({
   selector: 'app-pagina-pricipal',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaginaPricipalComponent implements OnInit {
 
-  constructor() { }
+  /**
+   * Lista de normas que se encuentran en la base de datos 
+   */
+  public normatividad: NormatividadDTO[] = [];
+
+  constructor(private normatividadService: NormatividadService) { }
 
   ngOnInit() {
+    this.getNormatividad();
+  }
+
+  public getNormatividad(): void {
+    this.normatividadService.getNormatividad().subscribe(normatividad => {
+      this.normatividad = normatividad;
+    });
   }
 
 }
