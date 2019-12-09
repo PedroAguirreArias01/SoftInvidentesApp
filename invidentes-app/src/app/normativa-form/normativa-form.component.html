@@ -8,13 +8,15 @@
                 <div class="example-container">
                     <mat-form-field appearance="outline">
                         <mat-label>Titulo</mat-label>
-                        <input matInput placeholder="Titulo">
+                        <input matInput placeholder="Titulo" aria-placeholder="Titulo norma o decreto">
                         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                         <mat-hint>Titulo:</mat-hint>
                     </mat-form-field>
 
                     <mat-form-field>
-                        <textarea matInput placeholder="Textarea"></textarea>
+                        <mat-label>Descripcion detallada</mat-label>
+                        <textarea matInput placeholder="Descripción de la norma o decreto"
+                            aria-placeholder="Descripción de la norma o decreto"></textarea>
                     </mat-form-field>
 
                     <mat-form-field>
@@ -23,6 +25,12 @@
                             <mat-option value="option">Decretos</mat-option>
                         </mat-select>
                     </mat-form-field>
+
+                    <mat-form-field>
+                            <mat-label>Información completa de la norma o decreto</mat-label>
+                            <textarea matInput placeholder="Información completa de la norma o decreto"
+                                aria-placeholder="Información completa de la norma o decreto"></textarea>
+                        </mat-form-field>
                 </div>
                 <button aria-label="Guardar" mat-raised-button color="primary">Aceptar</button>
             </form>

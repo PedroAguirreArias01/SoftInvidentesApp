@@ -1,6 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { NormatividadDTO } from '../dto/normatividad.dto';
 /**
  * @description clase que se encarga de gestionar los  servicios de normatividad
  * @author Pedro Aguirre Arias
@@ -27,21 +28,21 @@ export class NormatividadService {
 
   /**
    * @description Metodo encargado de crear la normatividad
-   * @param colaboradorDTO 
+   * @param normatividadDTO 
    */
-  crear(colaboradorDTO: ColaboradorDTO): Observable<any> {
-    return this.http.post(this.urlEndPoint, colaboradorDTO);
+  crear(normatividadDTO: NormatividadDTO): Observable<any> {
+    return this.http.post(this.urlEndPoint, normatividadDTO);
   }
 
   /**
-   * @description Metodo encargado de modificar la informacion del colaborador
+   * @description Metodo encargado de modificar la informacion repecto a la normatividad
    */
-  editar(colaboradorDTO: ColaboradorDTO): Observable<any> {
-    return this.http.put(this.urlEndPoint, colaboradorDTO);
+  editar(normatividadDTO: NormatividadDTO): Observable<any> {
+    return this.http.put(this.urlEndPoint, normatividadDTO);
   }
 
   /**
-   * @description Metodod encargado de elimanar un colaborador
+   * @description Metodod encargado de elimanar una norma
    * @param id 
    */
   eliminar(id: number): Observable<any> {
