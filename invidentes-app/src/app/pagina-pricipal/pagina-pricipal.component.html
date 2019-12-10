@@ -1,29 +1,37 @@
-<div class="row">
-  <div class="col-sm-4" *ngFor="let norma of normatividad">
-    <mat-card class="example-card">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{norma.titulo}}</mat-card-title>
-        <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
-      </mat-card-header>
-      <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Imagen de un perro"> -->
-      <mat-card-content>
-        <p>
-          {{norma.descripcion}}
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-      </mat-card-actions>
-      <div class="card-expand-area" *ngIf="card10Expanded" [@expandCollapse]>
-        <div class="card-expanded-content">
-          Card content that exceeds the maximum card height is truncated and does not
-          scroll, but the card can be expanded. Once expanded, the card may exceed the
-          maximum height of the view. In this case, the card will scroll with the card
-          collection.
-        </div>
+<div class="container">
+  <div class="card">
+    <div class="row">
+      <div class="col-sm-4" *ngFor="let norma of normatividad;let i=index;">
+        <mat-card class="example-card">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{norma.titulo}}</mat-card-title>
+            <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+          </mat-card-header>
+          <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Imagen de un perro"> -->
+          <mat-card-content>
+            <p>
+              {{norma.descripcion}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <!-- <button mat-button>LIKE</button>
+            <button mat-button>SHARE</button> -->
+            <button matTooltip="Ver contenido completo" mat-raised-button color="primary" aria-label="expand card"
+              (click)="i = !i">
+              <!-- <mat-icon *ngIf="card10Expanded">keyboard_arrow_up</mat-icon>
+              <mat-icon *ngIf="!card10Expanded">keyboard_arrow_down</mat-icon> -->
+             <samp  *ngIf="!i">Ver Más</samp>
+             <samp  *ngIf="i">Ver Menos</samp>
+            </button>
+          </mat-card-actions>
+          <div class="card-expand-area" *ngIf="i" [@expandCollapse]>
+            <div class="card-expanded-content">
+              {{norma.contenido}}
+            </div>
+          </div>
+        </mat-card>
       </div>
-    </mat-card>
+    </div>
   </div>
-</div> 
+</div>

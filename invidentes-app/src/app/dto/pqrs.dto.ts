@@ -1,0 +1,30 @@
+import { Respuesta } from './respuesta.dto';
+
+/**
+ * @author Pedro Aguirre Arias <pedro.aguirre@uptc.edu.co>
+ * @description clase que representa la entidad de preguntas quejas reclamos o sujerencias
+ */
+export class PqrsDTO {
+
+    /**
+     * Atributo que representa el id de la entidad
+     */
+    public id: number;
+
+    /**
+     * Atributo que representa la descripcion detallada de la problematica
+     */
+    public descripcion: string;
+
+    /**
+     * Atributo que representa el tipo de informacion 
+     * pregunta, queja, reclamo, sugerencia
+     */
+    public tipos: string;
+
+    /**
+     * Lista de respuestas realizadas por los usuarios
+     */
+    public respuestas: Respuesta[]=[];
+
+}

@@ -35,8 +35,8 @@ public class Normatividad implements Serializable{
 	/**
 	 * Atributo que representa una pequennia descripcion de la informacion
 	 */
-	@Column(name="descripcion", length = 300)
-	@Size(min=10, max = 300)
+	@Column(name="descripcion", length = 244)
+	@Size(min=10, max = 244)
 	private String descripcion;
 	/**
 	 * Atributo que representa el contenido total de la informacion
