@@ -1,4 +1,5 @@
 import { Respuesta } from './respuesta.dto';
+import { PersonaDTO } from './persona.dto';
 
 /**
  * @author Pedro Aguirre Arias <pedro.aguirre@uptc.edu.co>
@@ -26,5 +27,10 @@ export class PqrsDTO {
      * Lista de respuestas realizadas por los usuarios
      */
     public respuestas: Respuesta[]=[];
+
+    /**
+     * @description Atributo que representa a la persona que realiza la queja reclamo o sujerencia
+     */
+    public persona: PersonaDTO;
 
 }

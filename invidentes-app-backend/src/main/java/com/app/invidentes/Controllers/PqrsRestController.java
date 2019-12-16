@@ -11,39 +11,39 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import com.app.invidentes.models.entity.Normatividad;
+import com.app.invidentes.models.entity.Pqrs;
 import com.app.invidentes.models.entity.ResultadoDTO;
-import com.app.invidentes.models.services.INormatividadService;
+import com.app.invidentes.models.services.IPqrsService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-public class NormatividadRestController {
+public class PqrsRestController {
 
 	/**
 	 * Inyeccion de dependencias 
 	 */
 	@Autowired
-	private INormatividadService normatividadSer;
+	private IPqrsService pqrsService;
 	
-	@GetMapping("/normatividad")
-	public List<Normatividad> findAll() {
-		return (List<Normatividad>) normatividadSer.findAll();
+	@GetMapping("/pqrs")
+	public List<Pqrs> findAll() {
+		return (List<Pqrs>) pqrsService.findAll();
 	}
 
-	@PostMapping("/normatividad")
+	@PostMapping("/pqrs")
 	@ResponseStatus(HttpStatus.CREATED)
-	public ResultadoDTO crear(@RequestBody Normatividad normatividad) {
-		 return normatividadSer.crear(normatividad);
+	public ResultadoDTO crear(@RequestBody Pqrs pqrs) {
+		 return pqrsService.crear(pqrs);
 	}
 
-	@DeleteMapping("/normatividad/{id}")
+	@DeleteMapping("/pqrs/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(Long id) {
-		normatividadSer.delete(id);
+		pqrsService.delete(id);
 	}
 
-	@GetMapping("/normatividad/{id}")
-	public Normatividad findById(Long id) {
-		return normatividadSer.findById(id);
+	@GetMapping("/pqrs/{id}")
+	public Pqrs findById(Long id) {
+		return pqrsService.findById(id);
 	}
 }
