@@ -4,45 +4,88 @@
             <h3>Solución de PQRS – Peticiones, Quejas, Reclamos y Sugerencias</h3>
         </div>
         <div class="card-body">
-            <div class="container">
-                <h4 aria-readonly="Por Favor Agregue la información solicitada">Por Favor Agregue la información
-                    solicitada</h4>
+            <h4 aria-readonly="Por Favor Agregue la información solicitada">Por Favor Agregue la información
+                solicitada</h4>
+            <form [formGroup]="gestionarPqrsdForm">
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-lg-4">
+                        <div class="col-lg-6">
                             <mat-form-field appearance="outline">
                                 <mat-label>Nombre</mat-label>
-                                <input class="form-control" matInput placeholder="Nombre" aria-placeholder="Nombre">
-                                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                                <mat-hint>Nombre:</mat-hint>
+                                <input class="form-control" matInput placeholder="Nombre" aria-placeholder="Nombre"
+                                    class="form-control" formControlName="nombre">
                             </mat-form-field>
                         </div>
-                        <div class="col-lg-4">
-                            <label for="pwd">Apellido:</label>
-                            <input type="text" class="form-control" id="apellido" placeholder="Apellido">
-                        </div>
-                        <div class="col-lg-4">
-                            <label for="documento">Documento:</label>
-                            <input type="text" class="form-control" id="documento" placeholder="Documento">
+                        <div class="col-lg-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Apellido</mat-label>
+                                <input class="form-control" matInput placeholder="Apellido" aria-placeholder="Apellido"
+                                    class="form-control" formControlName="apellido">
+                            </mat-form-field>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
-                            <label for="direccion">Dirrección de residencia:</label>
-                            <input type="text" class="form-control" id="direccion" placeholder="Dirección">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Documento</mat-label>
+                                <input class="form-control" matInput placeholder="Documento"
+                                    aria-placeholder="Documento" class="form-control" formControlName="documento">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Dirrección de residencia</mat-label>
+                                <input class="form-control" matInput placeholder="Dirrección de residencia"
+                                    aria-placeholder="Dirrección de residencia" class="form-control"
+                                    formControlName="direccion">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <mat-form-field>
+                                <mat-select placeholder="Tipo de información" id="tipoPqrsEnum"
+                                    formControlName="tipoPqrsEnum">
+                                    <mat-option value="PREGUNTA">PREGUNTA</mat-option>
+                                    <mat-option value="QUEJA">QUEJA</mat-option>
+                                    <mat-option value="RECLAMO">RECLAMO</mat-option>
+                                    <mat-option value="SUGERENCIA">SUGERENCIA</mat-option>
+                                </mat-select>
+                            </mat-form-field>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            <label for="direccion">Descripción detallada de la problemática:</label>
-                            <textarea class="form-control" rows="5" id="comment"></textarea>
+                            <mat-form-field>
+                                <mat-label>Descripcion detallada</mat-label>
+                                <textarea matInput placeholder="Descripción detallada de la problemática"
+                                    aria-placeholder="Descripción detallada de la problemática" id="descripcion"
+                                    class="form-control" formControlName="descripcion" rows="10"></textarea>
+                            </mat-form-field>
                         </div>
                     </div>
                 </div>
-                <button type="button" class="btn btn-dark">ENVIAR COMENTARIO</button>
-            </div>
+                <button type="button" class="btn btn-dark" (click)="crearActualizar()">ENVIAR COMENTARIO</button>
+            </form>
         </div>
-
         <div class="card-footer">Footer</div>
     </div>
+</div>
+
+<div class="fuse-card indigo" *ngFor="let pqrs of listPqrs;let i=index;">
+
+    <div class="p-16">
+        <div class="h1">{{pqrs.tipoPqrsEnum}}</div>
+        <div class="h4 secondary-text">{{pqrs.persona.nombre}}</div>
+    </div>
+
+    <div class="p-16 pt-0 line-height-1.75">
+        {{pqrs.descripcion}}
+    </div>
+
+    <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="start center">
+        <button mat-button>SHARE</button>
+        <button mat-button>EXPLORE</button>
+    </div>
+
 </div>

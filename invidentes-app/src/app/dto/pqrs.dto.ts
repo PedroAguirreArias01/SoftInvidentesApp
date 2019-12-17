@@ -21,7 +21,7 @@ export class PqrsDTO {
      * Atributo que representa el tipo de informacion 
      * pregunta, queja, reclamo, sugerencia
      */
-    public tipos: string;
+    public tipoPqrsEnum: string;
 
     /**
      * Lista de respuestas realizadas por los usuarios
