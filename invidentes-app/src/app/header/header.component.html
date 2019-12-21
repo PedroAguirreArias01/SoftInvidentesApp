@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" href="#">{{title}}</a>
+  <a class="navbar-brand" href="#" aria-label="AppInvidentes-Boyacá">{{title}}</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -10,34 +10,34 @@
       <li class="nav-item" routerLinkActive="active">
           
         <a class="nav-link" routerLink="paginaPrincipal">
-            <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>INICIO <span class="sr-only">(current)</span></a>
+            <mat-icon aria-hidden="false" aria-label="Pagina prinsipal">home</mat-icon>INICIO <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink = "normativaForm">
+        <a class="nav-link" routerLink = "normativaForm" aria-label="Formulario para agregar informacion normativa">
             <mat-icon>assignment</mat-icon>NORMATIVIDAD</a>
       </li>
       <!-- <li class="nav-item" routerLinkActive="active"> -->
         <li class="nav-item dropdown" routerLinkActive="active">
-          <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-              <mat-icon>group</mat-icon>USUARIOS
+          <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown" aria-label="Menu colaboradores">
+              <mat-icon>group</mat-icon>COLABORADORES
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" routerLink= "/cearColaborador"><mat-icon>group_add</mat-icon>Crear Colaborador</a>
-            <a class="dropdown-item" routerLink="/colaboradores"><mat-icon>group</mat-icon>Colaboradores</a>
+            <a class="dropdown-item" routerLink= "/cearColaborador" aria-label="Crear colaborador"><mat-icon>group_add</mat-icon>Crear Colaborador</a>
+            <a class="dropdown-item" routerLink="/colaboradores" aria-label="Visualizar todos los colaboradores"><mat-icon>group</mat-icon>Colaboradores</a>
           <!--   <a class="dropdown-item" href="#">Link 3</a> -->
           </div>
         <!-- </li> -->
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="pqrsForm"><mat-icon>help</mat-icon>PQRS</a>
+        <a class="nav-link" routerLink="pqrsForm" aria-label="Preguntas, quejas, reclamos, sugerencias"><mat-icon>help</mat-icon>PQRS</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/quienesSomos"><mat-icon>info</mat-icon>QUIENES SOMOS</a>
+        <a class="nav-link" routerLink="/quienesSomos" aria-label="Quienes somos"><mat-icon>info</mat-icon>QUIENES SOMOS</a>
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <!-- <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> -->
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Iniciar sesión</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-log-in" aria-label="Iniciar sesión"></span> Iniciar sesión</a></li>
     </ul>
   </div>
 </nav>

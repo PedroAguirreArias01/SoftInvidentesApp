@@ -11,7 +11,7 @@ export class PqrsService {
   /**
    * Url que define la localizacion de los recursos 
    */
-  private urlEndPoint: string = 'http://localhost:8080/pqrs/';
+  private urlEndPoint: string = 'http://192.168.100.4:8080/pqrs/';
 
   constructor(injector: Injector, private http : HttpClient) { }
 

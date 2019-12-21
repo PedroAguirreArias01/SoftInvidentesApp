@@ -15,7 +15,7 @@ export class ColaboradorService {
   /**
    * Url que define la localizacion de los recursos 
    */
-  private urlEndPoint: string = 'http://localhost:8080/api/colaboradores/';
+  private urlEndPoint: string = 'http://192.168.100.4:8080/api/colaboradores/';
 
    /**
    * @description contructor de la clase
