@@ -16,7 +16,7 @@ import com.app.invidentes.models.entity.ResultadoDTO;
 import com.app.invidentes.models.services.INormatividadService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class NormatividadRestController {
 
 	/**

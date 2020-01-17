@@ -13,7 +13,7 @@ export class NormatividadService {
   /**
    * Url que define la localizacion de los recursos 
    */
-  private urlEndPoint: string = 'http://192.168.100.4:8080/normatividad/';
+  private urlEndPoint: string = 'http://localhost:8080/normatividad/';
 
   constructor(injector: Injector, private http : HttpClient) { }
 

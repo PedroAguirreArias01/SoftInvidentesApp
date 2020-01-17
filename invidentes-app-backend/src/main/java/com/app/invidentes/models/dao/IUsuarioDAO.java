@@ -2,7 +2,7 @@ package com.app.invidentes.models.dao;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.app.invidentes.models.entity.Colaborador;
+import com.app.invidentes.models.entity.Usuario;
 
 /**
  * Clase IColaboradorDAO contiene los metodos basicos para un crud
@@ -10,7 +10,7 @@ import com.app.invidentes.models.entity.Colaborador;
  * @author pedro
  *
  */
-public interface IColaboradorDAO extends CrudRepository<Colaborador, Long>{
+public interface IUsuarioDAO extends CrudRepository<Usuario, Long>{
 
 	
 }

@@ -19,9 +19,9 @@ public interface IPqrsService {
 	public List<Pqrs> findAll();
 	
 	/**
-	 * Metodo encargado de crear la Normatividad
+	 * Metodo encargado de crear pqrs
 	 */
-	public ResultadoDTO crear(Pqrs pqrs);
+	public Pqrs save(Pqrs pqrs);
 	
 	/**
 	 * Metodo encarga do de eliminar la Normatividad

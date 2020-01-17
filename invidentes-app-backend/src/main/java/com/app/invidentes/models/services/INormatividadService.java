@@ -2,7 +2,6 @@ package com.app.invidentes.models.services;
 
 import java.util.List;
 
-import com.app.invidentes.models.entity.Colaborador;
 import com.app.invidentes.models.entity.Normatividad;
 import com.app.invidentes.models.entity.ResultadoDTO;
 

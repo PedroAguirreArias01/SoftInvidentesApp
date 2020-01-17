@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.app.invidentes.models.dao.IPqrsDAO;
 import com.app.invidentes.models.entity.Pqrs;
-import com.app.invidentes.models.entity.ResultadoDTO;
 
 /**
  * Servicio que implementa los metodos del crud
@@ -29,9 +28,8 @@ public class PqrsServiceImpl implements IPqrsService{
 
 	@Override
 	@Transactional
-	public ResultadoDTO crear(Pqrs pqrs) {
-		pqrsDAO.save(pqrs);
-		return  new ResultadoDTO(true, "Informacion guardada conexito");
+	public Pqrs save(Pqrs pqrs) {
+		return pqrsDAO.save(pqrs);
 	}
 
 	@Override

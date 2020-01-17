@@ -7,12 +7,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.app.invidentes.models.entity.Pqrs;
-import com.app.invidentes.models.entity.ResultadoDTO;
 import com.app.invidentes.models.services.IPqrsService;
 
 @RestController
@@ -32,8 +34,19 @@ public class PqrsRestController {
 
 	@PostMapping("/pqrs")
 	@ResponseStatus(HttpStatus.CREATED)
-	public ResultadoDTO crear(@RequestBody Pqrs pqrs) {
-		 return pqrsService.crear(pqrs);
+	public Pqrs crear(@RequestBody Pqrs pqrs) {
+		 return pqrsService.save(pqrs);
+	}
+	
+	@PutMapping("/pqrs/{id}")
+	@ResponseStatus(HttpStatus.CREATED)
+	public Pqrs update(@RequestBody Pqrs pqrs, @PathVariable Long id) {
+		Pqrs pqrsActual = pqrsService.findById(id);
+		pqrsActual.setDescripcion(pqrs.getDescripcion());
+		pqrsActual.setPersona(pqrs.getPersona());
+		pqrs.setRespuestas(pqrs.getRespuestas());
+		pqrs.setTipoPqrsEnum(pqrs.getTipoPqrsEnum());
+		return this.pqrsService.save(pqrsActual);
 	}
 
 	@DeleteMapping("/pqrs/{id}")

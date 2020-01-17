@@ -1,4 +1,4 @@
-import { Respuesta } from './respuesta.dto';
+import { RespuestaDTO } from './respuesta.dto';
 import { PersonaDTO } from './persona.dto';
 
 /**
@@ -26,7 +26,7 @@ export class PqrsDTO {
     /**
      * Lista de respuestas realizadas por los usuarios
      */
-    public respuestas: Respuesta[]=[];
+    public respuestas: RespuestaDTO[]=[];
 
     /**
      * @description Atributo que representa a la persona que realiza la queja reclamo o sujerencia

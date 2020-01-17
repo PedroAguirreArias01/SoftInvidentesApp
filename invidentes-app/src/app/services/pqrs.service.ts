@@ -11,7 +11,7 @@ export class PqrsService {
   /**
    * Url que define la localizacion de los recursos 
    */
-  private urlEndPoint: string = 'http://192.168.100.4:8080/pqrs/';
+  private urlEndPoint: string = 'http://localhost:8080/pqrs/';
 
   constructor(injector: Injector, private http : HttpClient) { }
 
@@ -36,7 +36,7 @@ export class PqrsService {
    * @description Metodo encargado de modificar la informacion repecto a la normatividad
    */
   editar(pqrsDTO: PqrsDTO): Observable<any> {
-    return this.http.put(this.urlEndPoint, pqrsDTO);
+    return this.http.put(`${this.urlEndPoint}${pqrsDTO.id}`, pqrsDTO);
   }
 
   /**
@@ -44,6 +44,6 @@ export class PqrsService {
    * @param id 
    */
   eliminar(id: number): Observable<any> {
-    return this.http.delete(this.urlEndPoint+id);
+    return this.http.delete(`${this.urlEndPoint}${id}`);
   }
 }

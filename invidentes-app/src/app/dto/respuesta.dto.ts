@@ -5,7 +5,7 @@ import { PersonaDTO } from './persona.dto';
  * a una solicitus de preguntas quejas o reclamos o sugerencias 
  * @author Pedro Aguirre Arias <pedro.aguirre@uptc.edu.co>
  */
-export class Respuesta{
+export class RespuestaDTO {
     /**
      * Atrinuto que representa el id de la respuesta
      */

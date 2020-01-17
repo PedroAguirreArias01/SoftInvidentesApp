@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.app.invidentes.models.dao.IColaboradorDAO;
-import com.app.invidentes.models.entity.Colaborador;
+import com.app.invidentes.models.dao.IUsuarioDAO;
 import com.app.invidentes.models.entity.ResultadoDTO;
+import com.app.invidentes.models.entity.Usuario;
 
 /**
  * Clase que implementa IClienteService gestiona los metodos del crud
@@ -16,21 +16,21 @@ import com.app.invidentes.models.entity.ResultadoDTO;
  *
  */
 @Service
-public class ColaboradorServiceImpl implements IColaboradorService{
+public class UsuarioServiceImpl implements IUsuarioService{
 
 	/**
 	 * Inyeccion de dependencias
 	 */
 	@Autowired
-	private IColaboradorDAO colaboradorDAO;
+	private IUsuarioDAO usuarioDAO;
 	
 	/**
 	 * Metodo que retorna todos los colaboradores
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public List<Colaborador> findAll() {
-		return (List<Colaborador>) colaboradorDAO.findAll();
+	public List<Usuario> findAll() {
+		return (List<Usuario>) usuarioDAO.findAll();
 	}
 
 	/**
@@ -38,21 +38,21 @@ public class ColaboradorServiceImpl implements IColaboradorService{
 	 */
 	@Override
 	@Transactional
-	public ResultadoDTO crearColaborador(Colaborador colaborador) {
-		colaboradorDAO.save(colaborador);
+	public ResultadoDTO crearUsuario(Usuario usuario) {
+		usuarioDAO.save(usuario);
 		return new ResultadoDTO(true, "Colaborador creado con exito");
 	}
 
 	@Override
 	@Transactional
 	public void delete(Long id) {
-		colaboradorDAO.deleteById(id);
+		usuarioDAO.deleteById(id);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public Colaborador findById(Long id) {
-		return colaboradorDAO.findById(id).orElse(null);
+	public Usuario findById(Long id) {
+		return usuarioDAO.findById(id).orElse(null);
 	}
 
 }

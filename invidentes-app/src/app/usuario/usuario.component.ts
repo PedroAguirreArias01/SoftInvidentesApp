@@ -1,56 +1,58 @@
 import { Component, OnInit } from '@angular/core';
-import { ColaboradorDTO } from '../dto/colaborador.dto';
-import { ColaboradorService } from "../services/colaboradorService";
+import { UsuarioDTO } from '../dto/usuario.dto';
+import { UsuarioService } from "../services/usuarioService";
 import Swal from 'sweetalert2';
 /**
- * @description Clase ColaboradorComponent donde contiene todos los metodos de gestion de 
- * colaboradores
+ * @description Clase usuarioComponent donde contiene todos los metodos de gestion de 
+ * usuarios
  * @author Pedro Aguirre Arias <pedro.aguirre@uptc.edu.co>
  */
 @Component({
-  selector: 'colaborador',
-  templateUrl: './colaborador.component.html',
-  styleUrls: ['./colaborador.component.css']
+  selector: 'usuario',
+  templateUrl: './usuario.component.html',
+  styleUrls: ['./usuario.component.css']
 })
-export class ColaboradorComponent implements OnInit {
+export class UsuarioComponent implements OnInit {
 
   /**
-   * lista de colaboradores que se encuantran en la base de datos
+   * lista de usuarios que se encuantran en la base de datos
    */
-  public colaboradores: ColaboradorDTO[] = [];
+  public usuarios: UsuarioDTO[] = [];
   
   /**
-   * Contructor de la clase ColaboradorComponent
-   * @param colaboradorService 
+   * Contructor de la clase usuarioComponent
+   * @param usuarioService 
    */
-  constructor(private colaboradorService: ColaboradorService) { }
+  constructor(private usuarioService: UsuarioService) { }
 
   /**
    * @description Evento angular que se ejecuta al invocar el componente
    * @author Pedro Aguirre Arias <pedro.aguirre@uptc.edu.co>
    */
   ngOnInit() {
-    this.getColaboradores();
+
+    
+    this.getUsuarios();
   }
 
   /**
-   * @description Metodo encargado de consultar todos los colaboradores 
+   * @description Metodo encargado de consultar todos los usuarios 
    * que se encuentran en la base de datos
    * @author Pedro Aguirre Arias <pedro.aguirre@uptc.edu.co>
    */
-  getColaboradores(){
-    this.colaboradorService.getColaboradores().subscribe(
-      colaboradores =>{ this.colaboradores = colaboradores
+  getUsuarios(){
+    this.usuarioService.getUsuarios().subscribe(
+      usuarios =>{ this.usuarios = usuarios
       }
     );
   }
 
    /**
-     * @description metodo encargado de elimar Colaborador
+     * @description metodo encargado de elimar usuario
      * @author Pedro Aguirre Arias
-     * @param colaborador 
+     * @param usuario 
      */
-    eliminarComic(colaborador: ColaboradorDTO) {
+    delete(usuario: UsuarioDTO) {
       const swalWithBootstrapButtons = Swal.mixin({
           customClass: {
               confirmButton: 'btn btn-success',
@@ -69,19 +71,19 @@ export class ColaboradorComponent implements OnInit {
           reverseButtons: true
       }).then((result) => {
           if (result.value) {
-              let colaboradorAux: ColaboradorDTO = colaborador;
-              this.colaboradorService.eliminar(colaboradorAux.id).subscribe(resultadoDTO =>{
+              let usuarioAux: UsuarioDTO = usuario;
+              this.usuarioService.eliminar(usuarioAux.id).subscribe(resultadoDTO =>{
                   if(resultadoDTO.exitoso){
                       swalWithBootstrapButtons.fire(
                           'Eliminado!',
-                          'El Colaborador: ' + colaboradorAux.nombre + '  ha sido eliminado.',
+                          'El usuario: ' + usuarioAux.nombre + '  ha sido eliminado.',
                           'success'
                       )
-                      this.getColaboradores();
+                      this.getUsuarios();
                   }else{
                       swalWithBootstrapButtons.fire(
                           'No se ha eliminado!',
-                          'El colaborador: ' + colaboradorAux.nombre + '  No ha sido eliminado.',
+                          'El usuario: ' + usuarioAux.nombre + '  No ha sido eliminado.',
                           'success'
                       )
                   }
@@ -92,7 +94,7 @@ export class ColaboradorComponent implements OnInit {
           ) {
               swalWithBootstrapButtons.fire(
                   'Cancelado',
-                  'Tu Colaborador esta seguro :)',
+                  'Tu usuario esta seguro :)',
                   'error'
               )
           }
@@ -104,7 +106,7 @@ export class ColaboradorComponent implements OnInit {
      * @author Pedro aguirre Arias;
      * @param comic 
      */
-   /*  public editarComic(colaborador: ColaboradorDTO): void {
+   /*  public editarComic(usuario: usuarioDTO): void {
       this.posComicEdit = posicion;
       this.gestionarComicForm.controls.nombre.setValue(comic.nombre);
       this.gestionarComicForm.controls.editorial.setValue(comic.editorial);

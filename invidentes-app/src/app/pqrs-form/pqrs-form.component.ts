@@ -5,6 +5,7 @@ import { PqrsDTO } from '../dto/pqrs.dto';
 import { Router } from '@angular/router';
 import { PqrsService } from '../services/pqrs.service';
 import { PersonaDTO } from '../dto/persona.dto';
+import { RespuestaDTO } from '../dto/respuesta.dto';
 /**
  * @description Clase que se encarga de la gestion de PQRS
  * @author Pedro Aguirre Arias <pedro.aguirre@uptc.edu.co>
@@ -20,6 +21,14 @@ export class PqrsFormComponent implements OnInit {
   * Atributo que contiene los controles del formulario
   */
  public gestionarPqrsdForm: FormGroup;
+
+ /**
+  * Atributo que contiene los controles del formulario de respuestas a pqrs
+  */
+ public gestionarRespuestaForm: FormGroup;
+
+ public respuesta: RespuestaDTO;
+
  /**
   * Atributo que contendra la informacion del pqrs
   */
@@ -54,6 +63,13 @@ export class PqrsFormComponent implements OnInit {
     descripcion: [null, Validators.required],
     tipoPqrsEnum: [null, Validators.required]
    });
+   this.gestionarRespuestaForm = this.fb.group({
+    nombre: [null, Validators.required],
+    apellido: [null, Validators.required],
+    documento: [null],
+    direccion: [null, Validators.required],
+    descripcion: [null, Validators.required],
+   })
  }
 
  ngOnInit() {
@@ -86,18 +102,15 @@ export class PqrsFormComponent implements OnInit {
    if (!this.editar) {
      console.log(this.pqrs);
      this.pqrsservice.crear(this.pqrs).subscribe(resultadoDTO => {
-       if (resultadoDTO.exitoso) {
          Swal.fire(
            'pqrs creada con exito!',
            'success'
          );
          this.limpiarFormulario();
-         this.router.navigate(['paginaPrincipal']);
-       }
+         this.router.navigate(['pqrsForm'])
      }, error => {
        console.log(error);
      });
-
    } else {
      this.pqrsservice.editar(this.pqrs).subscribe(resultadoDTO => {
        if (resultadoDTO.exitoso) {
@@ -123,6 +136,30 @@ export class PqrsFormComponent implements OnInit {
    this.gestionarPqrsdForm.controls.documento.setValue(null);
    this.gestionarPqrsdForm.controls.direccion.setValue(null);
    this.gestionarPqrsdForm.controls.tipoPqrsEnum.setValue(null);
+ }
+
+
+ private crearRespuesta(pqrs:PqrsDTO): void {
+  this.persona = new PersonaDTO;
+   this.persona.nombre = this.gestionarRespuestaForm.controls.nombre.value;
+   this.persona.apellido = this.gestionarRespuestaForm.controls.apellido.value;
+   this.persona.numIdentificacion = this.gestionarRespuestaForm.controls.documento.value;
+   this.persona.direccion = this.gestionarRespuestaForm.controls.direccion.value;
+
+   this.respuesta = new RespuestaDTO;
+   this.respuesta.descripcion = this.gestionarRespuestaForm.controls.descripcion.value;
+   this.respuesta.persona = this.persona;
+   console.log('respuesta: '+JSON.stringify(this.respuesta))
+   pqrs.respuestas.push(this.respuesta);
+   this.pqrsservice.editar(pqrs).subscribe(pqrs =>{
+     this.pqrs = pqrs;
+     console.log('resultado: '+JSON.stringify(pqrs.respuestas[0]));
+    Swal.fire(
+      'Respuesta a pqrs creada con exito!',
+      'success'
+    );
+    this.getPqrs();
+   });
  }
 
 }

@@ -2,7 +2,7 @@
  * @description clase que representa la entidad colaborador
  * @author Pedro Aguirre Arias
  */
-export class ColaboradorDTO {
+export class UsuarioDTO {
     /**
      * atributo que representa el id del colaborador
      */
@@ -30,5 +30,5 @@ export class ColaboradorDTO {
     /**
      * Atributo que representa la contraseña del colaborador
      */
-    public password: string;
+    public contrasena: string;
 }

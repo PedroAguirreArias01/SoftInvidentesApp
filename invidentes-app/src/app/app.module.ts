@@ -6,15 +6,15 @@ import {AngularMaterial} from './angularMaterial';
 import { AppComponent } from './app.component';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
-import { ColaboradorComponent } from './colaborador/colaborador.component';
-import { ColaboradorService } from "./services/colaboradorService";
+import { UsuarioComponent } from './usuario/usuario.component';
+import { UsuarioService } from "./services/usuarioService";
 import { PaginaPricipalComponent } from './pagina-pricipal/pagina-pricipal.component';
 import { PqrsFormComponent } from './pqrs-form/pqrs-form.component';
 import { NormativaFormComponent } from './normativa-form/normativa-form.component';
 //TODO
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
-import { ColaboradorFormComponent } from './colaborador/colaborador-form.component';
+import { UsuarioFormComponent } from './usuario/usuario-form.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -28,12 +28,12 @@ import { QuienesSomosComponent } from './quienes-somos/quienes-somos.component';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    ColaboradorComponent,
+    UsuarioComponent,
     PaginaPricipalComponent,
     PqrsFormComponent,
     NormativaFormComponent,
     LoginComponent,
-    ColaboradorFormComponent,
+    UsuarioFormComponent,
     QuienesSomosComponent
   ],
   imports: [
@@ -50,7 +50,7 @@ import { QuienesSomosComponent } from './quienes-somos/quienes-somos.component';
   exports: [
     AngularMaterial  
   ],
-  providers: [ColaboradorService],
+  providers: [UsuarioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
