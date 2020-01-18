@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import { UsuarioComponent } from './usuario/usuario.component';
-import { UsuarioService } from "./services/usuarioService";
+import { UsuarioService } from "./services/usuario.service";
 import { PaginaPricipalComponent } from './pagina-pricipal/pagina-pricipal.component';
 import { PqrsFormComponent } from './pqrs-form/pqrs-form.component';
 import { NormativaFormComponent } from './normativa-form/normativa-form.component';

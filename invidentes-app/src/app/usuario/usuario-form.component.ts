@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { UsuarioService } from '../services/UsuarioService';
+import { UsuarioService } from '../services/usuario.service';
 import { UsuarioDTO } from '../dto/usuario.dto';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';

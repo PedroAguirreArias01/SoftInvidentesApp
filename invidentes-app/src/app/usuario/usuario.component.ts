@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioDTO } from '../dto/usuario.dto';
-import { UsuarioService } from "../services/usuarioService";
+import { UsuarioService } from "../services/usuario.service";
 import Swal from 'sweetalert2';
 /**
  * @description Clase usuarioComponent donde contiene todos los metodos de gestion de 
