@@ -6,6 +6,7 @@ import { PqrsFormComponent } from './pqrs-form/pqrs-form.component';
 import { NormativaFormComponent } from './normativa-form/normativa-form.component';
 import { UsuarioFormComponent } from './usuario/usuario-form.component';
 import { QuienesSomosComponent } from './quienes-somos/quienes-somos.component';
+import { PoliticasComponent } from './politicas/politicas.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'pqrsForm', component: PqrsFormComponent},
   {path: 'normativaForm', component: NormativaFormComponent},
   {path: 'cearColaborador', component: UsuarioFormComponent},
-  {path: 'quienesSomos', component: QuienesSomosComponent}
+  {path: 'quienesSomos', component: QuienesSomosComponent},
+  {path: 'politicas', component: PoliticasComponent}
 
 ]
 

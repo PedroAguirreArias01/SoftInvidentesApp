@@ -40,16 +40,4 @@ public enum EstadoEnum {
 	public void setCodigoMensaje(String codigoMensaje) {
 		this.codigoMensaje = codigoMensaje;
 	}
-	
-	/**
-	 * 
-	 * Metodo encargado de 
-	 * <b>Caso de Uso</b>
-	 * @author pedro
-	 * 
-	 * @return
-	 */
-	public String  prubeba() {
-		return null;
-	}
 }

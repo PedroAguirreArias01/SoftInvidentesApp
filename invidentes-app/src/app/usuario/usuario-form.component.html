@@ -1,74 +1,83 @@
 <div class="container">
     <div class="card">
         <div class="card-header text-primary">
-            <h1 matBadge="Colaborador" [matBadgeHidden]="visible">
-                Crear 
-            </h1>
+            <h3>
+                Crear Usuarios
+            </h3>
         </div>
         <div class="card-body">
-            <form [formGroup]="gestionarColaboradorForm">
+            <form [formGroup]="gestionarUsuarioForm">
                 <div class="row">
-                    <div class="col-6">
-                        <label for="nombreComic">Nombres:</label>
-                        <input type="text" class="form-control" id="nombre" formControlName="nombre"
-                            [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }" maxlength="50">
-                        <div *ngIf="submitted && f.nombre.errors">
-                            <span class="text-danger" *ngIf="f.nombre.errors.required">Campo requerido.</span>
-                        </div>
+                    <div class="col-lg-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Nombres</mat-label>
+                            <input class="form-control" matInput placeholder="Nombre" aria-placeholder="Nombres"
+                                aria-label="Nombres" class="form-control" formControlName="nombre">
+                        </mat-form-field>
                     </div>
-                    <div class="col-6">
-                        <label for="nombreComic">Apellidos:</label>
-                        <input type="text" class="form-control" id="apellidoColaborador" formControlName="apellido"
-                            [ngClass]="{ 'is-invalid': submitted && f.apellido.errors }" maxlength="50">
-                        <div *ngIf="submitted && f.apellido.errors">
-                            <span class="text-danger" *ngIf="f.apellido.required">Campo requerido.</span>
-                        </div>
+                    <div class="col-lg-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Apellido</mat-label>
+                            <input class="form-control" matInput placeholder="Apellido" aria-placeholder="Apellido"
+                                aria-label="Apellidos" class="form-control" formControlName="apellido">
+                        </mat-form-field>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-6">
-                        <label for="nombreComic">Correo:</label>
-                        <input type="email" class="form-control" id="email" formControlName="email"
-                            [ngClass]="{ 'is-invalid': submitted && f.email.errors }" maxlength="50">
-                        <div *ngIf="submitted && f.email.errors">
-                            <span class="text-danger" *ngIf="f.email.errors.required">Campo requerido.</span>
-                        </div>
+                    <div class="col-lg-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <input class="form-control" type="email" matInput placeholder="email"
+                                aria-placeholder="email" aria-label="email" class="form-control"
+                                formControlName="email">
+                        </mat-form-field>
                     </div>
-                    <div class="col-6">
-                        <label for="nombreComic">Usuario:</label>
-                        <input type="text" class="form-control" id="usuario" formControlName="usuario"
-                            [ngClass]="{ 'is-invalid': submitted && f.usuario.errors }" maxlength="50">
-                        <div *ngIf="submitted && f.usuario.errors">
-                            <span class="text-danger" *ngIf="f.usuario.errors.required">Campo requerido.</span>
-                        </div>
+                    <div class="col-lg-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Usuario</mat-label>
+                            <input class="form-control" type="text" matInput placeholder="Usuario"
+                                aria-placeholder="usuario" aria-label="Usuario" class="form-control"
+                                formControlName="usuario">
+                        </mat-form-field>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-6">
-                        <label for="nombreComic">Contraseña:</label>
-                        <input type="password" class="form-control" id="password" formControlName="password"
-                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" maxlength="8">
-                        <div *ngIf="submitted && f.password.errors">
-                            <span class="text-danger" *ngIf="f.email.password.required">Campo requerido.</span>
-                        </div>
+                    <div class="col-lg-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Contraseña:</mat-label>
+                            <input class="form-control" type="password" matInput placeholder="Contraseña"
+                                aria-placeholder="password" aria-label="Contraseña" class="form-control"
+                                formControlName="password">
+                        </mat-form-field>
                     </div>
-                    <div class="col-6">
-                        <label for="nombreComic">Confirmar contraseña:</label>
-                        <input type="password" class="form-control" id="password" formControlName="password"
-                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" maxlength="8">
-                        <div *ngIf="submitted && f.password.errors">
-                            <span class="text-danger" *ngIf="f.nombre.password.required">Campo requerido.</span>
-                        </div>
+                    <div class="col-lg-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Coonfirmar contraseña:</mat-label>
+                            <input class="form-control" type="password" matInput placeholder="Contraseña"
+                                aria-placeholder="password" aria-label="Contraseña" class="form-control"
+                                formControlName="password">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <mat-form-field>
+                            <mat-select placeholder="Tipo de usuario" id="rol"
+                                formControlName="rol" aria-label="Rol">
+                                <mat-option value="ADMINISTRADOR" aria-label="Administrador">Administrador</mat-option>
+                                <mat-option value="COLABORADOR" aria-label="Colaborador">Colaborador</mat-option>
+                            </mat-select>
+                        </mat-form-field>
                     </div>
                 </div>
                 <div class="row my-5">
                     <div class="col-sm-6"></div>
                     <div class="col-6 text-right">
-                        <button matTooltip="Crear colaborador" mat-raised-button color="primary"  aria-label="Crear colaborador" (click)="crearActualizar()">Crear Colaborador</button>
+                        <button matTooltip="Crear usuario" mat-raised-button color="primary"
+                            aria-label="Crear usuario" (click)="crearActualizar()">Crear usuario</button>
                     </div>
                 </div>
             </form>
         </div>
-        <div class="card-footer">Footer</div>
     </div>
 </div>

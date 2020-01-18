@@ -36,6 +36,7 @@ export class UsuarioFormComponent implements OnInit {
       email: [null, Validators.required],
       usuario: [null, Validators.required],
       password: [null, Validators.required],
+      rol: [null, Validators.required],
     });
   }
 
