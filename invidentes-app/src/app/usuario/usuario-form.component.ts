@@ -4,6 +4,7 @@ import { UsuarioService } from '../services/usuario.service';
 import { UsuarioDTO } from '../dto/usuario.dto';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { RolDTO } from '../dto/rol.dto';
 
 @Component({
   selector: 'app-Usuario-form',
@@ -24,6 +25,12 @@ export class UsuarioFormComponent implements OnInit {
    * Atributo que indica si se esta editando un comic
    */
   public editar: boolean;
+
+  /**
+   * Atributo que representa el rol del usuario
+   */
+  public rol: RolDTO;
+
   /**
    * Atributo para paginado de la tabla
    */
@@ -50,12 +57,15 @@ export class UsuarioFormComponent implements OnInit {
     if (this.gestionarUsuarioForm.invalid) {
       return;
     }
+    this.rol = new RolDTO();
     this.Usuario = new UsuarioDTO();
     this.Usuario.nombre = this.gestionarUsuarioForm.controls.nombre.value;
     this.Usuario.apellido = this.gestionarUsuarioForm.controls.apellido.value;
     this.Usuario.email = this.gestionarUsuarioForm.controls.email.value;
     this.Usuario.usuario = this.gestionarUsuarioForm.controls.usuario.value;
     this.Usuario.contrasena = this.gestionarUsuarioForm.controls.password.value;
+    this.rol.nombre = this.gestionarUsuarioForm.controls.rol.value;
+    this.Usuario.rol = this.rol;
     if (!this.editar) {
       this.Usuarioservice.crearUsuario(this.Usuario).subscribe(resultadoDTO => {
         if (resultadoDTO.exitoso) {

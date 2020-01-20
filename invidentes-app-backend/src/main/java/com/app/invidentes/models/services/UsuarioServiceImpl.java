@@ -38,9 +38,8 @@ public class UsuarioServiceImpl implements IUsuarioService{
 	 */
 	@Override
 	@Transactional
-	public ResultadoDTO crearUsuario(Usuario usuario) {
-		usuarioDAO.save(usuario);
-		return new ResultadoDTO(true, "Colaborador creado con exito");
+	public Usuario crearUsuario(Usuario usuario) {
+		return usuarioDAO.save(usuario);
 	}
 
 	@Override

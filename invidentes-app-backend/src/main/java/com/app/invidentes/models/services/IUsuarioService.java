@@ -20,7 +20,7 @@ public interface IUsuarioService {
 	/**
 	 * Metodo encargado de crear usuarios del sistema
 	 */
-	public ResultadoDTO crearUsuario(Usuario usuario);
+	public Usuario crearUsuario(Usuario usuario);
 	
 	/**
 	 * Metodo encarga do de eliminar un usuario

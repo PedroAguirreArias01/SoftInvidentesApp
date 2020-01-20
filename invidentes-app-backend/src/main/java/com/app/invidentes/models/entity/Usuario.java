@@ -40,7 +40,7 @@ public class Usuario implements Serializable {
     /**
      * Atributo que representa el nombre del colaborador
      */
-	@Column(name = "nombre")
+	@Column(name = "nombre", nullable = false)
 	private String nombre;
     /**
      * Atributo que representa el apellido del colaborador
@@ -55,7 +55,7 @@ public class Usuario implements Serializable {
     /**
      * Atributo que representa el email del colaborador
      */
-	@Column(name = "correo")
+	@Column(name = "correo", nullable = false, unique = true)
 	private String email;
 	
 	/**
@@ -69,7 +69,7 @@ public class Usuario implements Serializable {
 	// ------------------ INFORMACIÓN DE AUTENTICACIÓN------------------------
 
 	@NotNull
-	@Column(unique = true, length = 20)
+	@Column(unique = true, nullable = false, length = 20)
 	private String usuario;
 
 	@NotNull

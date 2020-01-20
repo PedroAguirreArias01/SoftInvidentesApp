@@ -15,7 +15,7 @@ export class UsuarioService {
   /**
    * Url que define la localizacion de los recursos 
    */
-  private urlEndPoint: string = 'http://localhost:8080/api/Usuarios/';
+  private urlEndPoint: string = 'http://localhost:8080/api/usuarios/';
 
    /**
    * @description contructor de la clase

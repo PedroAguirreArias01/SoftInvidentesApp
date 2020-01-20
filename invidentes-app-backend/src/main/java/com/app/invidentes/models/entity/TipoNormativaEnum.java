@@ -8,7 +8,10 @@ package com.app.invidentes.models.entity;
 public enum TipoNormativaEnum {
 
 	LEY("enum.normatividad.ley"), 
-	DECRETO("enum.normatividad.decreto");
+	DECRETO("enum.normatividad.decreto"),
+	RESOLUCION("enum.normatividad.resolucion"),
+	ORDENANZA("enum.normatividad.ordenanza"),
+	ACUERDO("enum.normatividad.acuerdo");
 	/**
 	 * Atributo que contiene la clave del mensaje para la internacionalizacion
 	 */
@@ -39,17 +42,5 @@ public enum TipoNormativaEnum {
 	 */
 	public void setCodigoMensaje(String codigoMensaje) {
 		this.codigoMensaje = codigoMensaje;
-	}
-	
-	/**
-	 * 
-	 * Metodo encargado de 
-	 * <b>Caso de Uso</b>
-	 * @author pedro
-	 * 
-	 * @return
-	 */
-	public String  prubeba() {
-		return null;
 	}
 }
