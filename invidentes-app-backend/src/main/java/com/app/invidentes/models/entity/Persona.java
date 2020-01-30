@@ -8,7 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+/**
+ * Clase que representa a las personas que realizan pqrs
+ * o brindan asesoria brindando solucion a una pqrs
+ * @author pedro
+ *
+ */
 @Entity
 @Table(name = "PERSONAS")
 public class Persona implements Serializable{

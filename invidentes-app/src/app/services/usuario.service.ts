@@ -1,6 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { UsuarioDTO } from '../dto/usuario.dto';
 import { Observable, of } from 'rxjs';
+import {catchError} from 'rxjs/operators';
 import { HttpClient } from "@angular/common/http";
 
 /**

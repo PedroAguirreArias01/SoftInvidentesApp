@@ -1,14 +1,17 @@
 package com.app.invidentes.models.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 /**
- * Clase 
+ * Clase que representa las respuestas a las pqrs
  * @author pedro
  *
  */
@@ -38,7 +41,19 @@ public class Respuesta implements Serializable{
     /**
      * Atributo que representa la persona quien realizo la respuesta
      */
+    @ManyToOne
     private Persona persona;
+    
+    /**
+     * Atributo que representa la fecha de creacion de la respuesta
+     */
+    @Column(name="fecha_creacion")
+    private LocalDate fechaCreacion;
+    
+    /**
+     * Atributo que representa los archivos asociados a la respuesta
+     */
+    private String urlRecursos;
     
     public Respuesta() {
 		// TODO Auto-generated constructor stub
@@ -76,4 +91,19 @@ public class Respuesta implements Serializable{
 		this.persona = persona;
 	}
 
+	public LocalDate getFechaCreacion() {
+		return fechaCreacion;
+	}
+
+	public void setFechaCreacion(LocalDate fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
+
+	public String getUrlRecursos() {
+		return urlRecursos;
+	}
+
+	public void setUrlRecursos(String urlRecursos) {
+		this.urlRecursos = urlRecursos;
+	}
 }

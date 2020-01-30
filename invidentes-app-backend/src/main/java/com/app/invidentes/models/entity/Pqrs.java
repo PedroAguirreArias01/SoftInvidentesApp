@@ -1,13 +1,17 @@
 package com.app.invidentes.models.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -51,6 +55,18 @@ public class Pqrs implements Serializable{
     @ManyToOne
     private Persona persona;
     
+    /**
+     * Atributo que representa la fecha de creacion de la pqrs
+     */
+    @Column(name="fecha_creacion")
+    private LocalDate fechaCreacion;
+    
+    /**
+     * Atributo que representa la url de los archivos
+     */
+    @Lob
+    private Byte[] recursos;
+    
     public Pqrs() {
 		// TODO Auto-generated constructor stub
 	}
@@ -93,5 +109,21 @@ public class Pqrs implements Serializable{
 
 	public void setPersona(Persona persona) {
 		this.persona = persona;
+	}
+
+	public LocalDate getFechaCreacion() {
+		return fechaCreacion;
+	}
+
+	public void setFechaCreacion(LocalDate fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
+
+	public Byte[] getRecursos() {
+		return recursos;
+	}
+
+	public void setUrlRecursos(Byte[] recursos) {
+		this.recursos = recursos;
 	}
 }

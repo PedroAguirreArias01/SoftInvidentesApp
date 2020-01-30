@@ -9,9 +9,15 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
-
+/**
+ * Clase que representa la tabla normatividad
+ * @author pedro
+ *
+ */
 @Entity
 @Table(name = "NORMATIVIDAD")
 public class Normatividad implements Serializable{
@@ -35,13 +41,13 @@ public class Normatividad implements Serializable{
 	/**
 	 * Atributo que representa una pequennia descripcion de la informacion
 	 */
-	@Column(name="descripcion", length = 244)
-	@Size(min=3, max = 244)
+	@Column(name="descripcion", length = 256)
+	@Size(min=3, max = 256)
 	private String descripcion;
 	/**
 	 * Atributo que representa el contenido total de la informacion
 	 */
-	@Column(name="contenido", length = 10000)
+	@Column(name="contenido", length = 100000)
 	private String contenido;
 	/**
 	 * Atributo quue representa el tipo de informacion 
@@ -49,6 +55,12 @@ public class Normatividad implements Serializable{
 	@Column(name="tipo")
 	@Enumerated(value = EnumType.STRING)
 	private TipoNormativaEnum tipoNormativaEnum;
+	
+	/**
+	 * Atrbuto que representa el usuario que creo dicha normatividad
+	 */
+	@ManyToOne
+	private Usuario usuario;
 	
 	/**
 	 * Contructor de la calse normatividad
@@ -104,6 +116,12 @@ public class Normatividad implements Serializable{
 	public void setTipoNormativaEnum(TipoNormativaEnum tipoNormativaEnum) {
 		this.tipoNormativaEnum = tipoNormativaEnum;
 	}
-	
-	
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 }
