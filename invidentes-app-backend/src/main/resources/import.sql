@@ -1,6 +1,4 @@
 /*INTERT ROLERS*/
-insert into ROLES (nombre) values ('ADMINISTRADOR');
-insert into ROLES (nombre) values ('COLABORADOR');
 
 /*INTERT USUARIOS*/
 

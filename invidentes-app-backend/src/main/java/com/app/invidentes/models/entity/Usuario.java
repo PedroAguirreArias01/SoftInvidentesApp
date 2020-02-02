@@ -87,6 +87,7 @@ public class Usuario implements Serializable {
 	@PrePersist
 	public void prePersist() {
 		this.estadoEnum = EstadoEnum.ACTIVO;
+		this.createAt = LocalDate.now();
 	}
 	
 	public Long getId() {

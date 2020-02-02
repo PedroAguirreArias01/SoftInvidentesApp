@@ -66,32 +66,13 @@ export class UsuarioFormComponent implements OnInit {
     this.Usuario.contrasena = this.gestionarUsuarioForm.controls.password.value;
     this.rol.nombre = this.gestionarUsuarioForm.controls.rol.value;
     this.Usuario.rol = this.rol;
-    if (!this.editar) {
-      this.Usuarioservice.crearUsuario(this.Usuario).subscribe(resultadoDTO => {
-        if (resultadoDTO.exitoso) {
+      this.Usuarioservice.crearUsuario(this.Usuario).subscribe(usuario => {
           Swal.fire(
             'Usuario creado con exito!',
             'success'
           );
-          this.limpiarFormulario();
-          this.router.navigate(['Usuarioes']);
-        }
-      }, error => {
-        console.log(error);
-      });
-
-    } else {
-      this.Usuarioservice.editar(this.Usuario).subscribe(resultadoDTO => {
-        if (resultadoDTO.exitoso) {
-          Swal.fire(
-            'Comic modificado con exito!',
-            'success'
-          );
-          this.limpiarFormulario();
-          this.editar = false;
-        }
-      });
-    }
+          this.router.navigate(['colaboradores']);
+        })
   }
 
   /**

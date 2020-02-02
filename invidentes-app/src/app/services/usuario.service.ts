@@ -1,9 +1,9 @@
 import { Injectable, Injector } from '@angular/core';
 import { UsuarioDTO } from '../dto/usuario.dto';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import { HttpClient } from "@angular/common/http";
-
+import Swal from 'sweetalert2';
 /**
  * @description clase que se encarga de gestionar los  servicios de Usuario
  * @author Pedro Aguirre Arias <pedro.aguirre@uptc.edu.co>
@@ -29,7 +29,12 @@ export class UsuarioService {
    * @author Pedro Aguirre Arias <pedro.aguirre@uptc.edu.co>
    */
   getUsuarios(): Observable<any> {
-    return this.http.get(this.urlEndPoint);
+    return this.http.get(this.urlEndPoint).pipe(
+      catchError(e => {
+        Swal.fire('Error al cargar los usuarios', e.error.mensaje, 'error');
+        return throwError(e);
+      })
+    );
   }
 
   /**
@@ -37,14 +42,24 @@ export class UsuarioService {
    * @param usuarioDTO 
    */
   crearUsuario(usuarioDTO: UsuarioDTO): Observable<any> {
-    return this.http.post(this.urlEndPoint, usuarioDTO);
+    return this.http.post(this.urlEndPoint, usuarioDTO).pipe(
+      catchError(e => {
+        Swal.fire('Error al crear', e.error.mensaje, 'error');
+        return throwError(e);
+      })
+    );
   }
 
   /**
    * @description Metodo encargado de modificar la informacion del Usuario
    */
   editar(usuarioDTO: UsuarioDTO): Observable<any> {
-    return this.http.put(`${this.urlEndPoint}${usuarioDTO.id}`, usuarioDTO);
+    return this.http.put(`${this.urlEndPoint}${usuarioDTO.id}`, usuarioDTO).pipe(
+      catchError(e => {
+        Swal.fire('Error al editar', e.error.mensaje, 'error');
+        return throwError(e);
+      })
+    );
   }
 
   /**
@@ -52,7 +67,12 @@ export class UsuarioService {
    * @param id 
    */
   eliminar(id: number): Observable<any> {
-    return this.http.delete(`${this.urlEndPoint}${id}`);
+    return this.http.delete(`${this.urlEndPoint}${id}`).pipe(
+      catchError(e => {
+        Swal.fire('Error al eliminar', e.error.mensaje, 'error');
+        return throwError(e);
+      })
+    );
   }
 
 }

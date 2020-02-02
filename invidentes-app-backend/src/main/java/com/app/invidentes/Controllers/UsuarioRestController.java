@@ -15,12 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.invidentes.models.services.IUsuarioService;
-
-import com.app.invidentes.models.entity.ResultadoDTO;
+import com.app.invidentes.models.dao.IRolDAO;
+import com.app.invidentes.models.entity.Rol;
 import com.app.invidentes.models.entity.Usuario;
 
 /**
@@ -38,6 +37,12 @@ public class UsuarioRestController {
 	 */
 	@Autowired
 	private IUsuarioService usuarioService;
+	
+	/**
+	 * Atributo de inyeccion de dependencias del rol del usuario
+	 */
+	@Autowired
+	private IRolDAO rolDao;
 	
 	/**
 	 * Servicio de obtener todos los Usuarios
@@ -81,6 +86,9 @@ public class UsuarioRestController {
 	@PostMapping("/usuarios")
 	public ResponseEntity<?> crearUsuario(@RequestBody Usuario usuario) {
 		Usuario usuarioNuevo = null;
+		Rol rol  = new Rol();
+		rol = usuario.getRol();
+		rolDao.save(rol);
 		Map<String, Object> response = new HashMap<>();
 		try {
 			usuarioNuevo = usuarioService.crearUsuario(usuario);
