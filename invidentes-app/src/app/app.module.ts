@@ -23,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { QuienesSomosComponent } from './quienes-somos/quienes-somos.component';
 import { PoliticasComponent } from './politicas/politicas.component';
+import { GestionarRolComponent } from './gestionar-rol/gestionar-rol.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { PoliticasComponent } from './politicas/politicas.component';
     LoginComponent,
     UsuarioFormComponent,
     QuienesSomosComponent,
-    PoliticasComponent
+    PoliticasComponent,
+    GestionarRolComponent
   ],
   imports: [
     BrowserModule,

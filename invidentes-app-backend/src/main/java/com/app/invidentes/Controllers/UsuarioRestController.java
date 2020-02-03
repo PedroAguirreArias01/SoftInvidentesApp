@@ -1,6 +1,7 @@
 package com.app.invidentes.Controllers;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,38 @@ public class UsuarioRestController {
 	private IRolDAO rolDao;
 	
 	/**
+	 * url = http://localhost:8080/api/usuarios/rol
+	 * @param rol
+	 * @return
+	 */
+	@PostMapping("/usuarios/rol/")
+	public ResponseEntity<?> crearRol(@RequestBody Rol rol) {
+		Rol rolActual = null;
+		Map<String, Object> response = new HashMap<>();
+		try {
+			rolActual = rolDao.save(rol);
+			
+		} catch (DataAccessException e) {
+			response.put("mensaje", "Error al realizar la inserción en la base de datos");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		response.put("mensaje", "El rol ha sido creado con exito");
+		response.put("usuario", rolActual);
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
+	}
+	
+	/**
+	 * Servicio de obtener todos los roles
+	 * url = http://localhost:8080/api/usuarios/rol
+	 * @return
+	 */
+	@GetMapping("/usuarios/rol/")
+	public java.util.List<Rol> getRoles(){
+		return (List<Rol>) rolDao.findAll();
+	}
+	
+	/**
 	 * Servicio de obtener todos los Usuarios
 	 * url = http://localhost:8080/api/usuarios
 	 * @return
@@ -86,9 +119,9 @@ public class UsuarioRestController {
 	@PostMapping("/usuarios")
 	public ResponseEntity<?> crearUsuario(@RequestBody Usuario usuario) {
 		Usuario usuarioNuevo = null;
-		Rol rol  = new Rol();
+		/*Rol rol  = new Rol();
 		rol = usuario.getRol();
-		rolDao.save(rol);
+		rolDao.save(rol);*/
 		Map<String, Object> response = new HashMap<>();
 		try {
 			usuarioNuevo = usuarioService.crearUsuario(usuario);

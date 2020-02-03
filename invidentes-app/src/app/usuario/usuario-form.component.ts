@@ -31,6 +31,8 @@ export class UsuarioFormComponent implements OnInit {
    */
   public rol: RolDTO;
 
+  public roles: RolDTO[] = [];
+
   /**
    * Atributo para paginado de la tabla
    */
@@ -48,6 +50,7 @@ export class UsuarioFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getRoles();
   }
 
   /**
@@ -57,14 +60,18 @@ export class UsuarioFormComponent implements OnInit {
     if (this.gestionarUsuarioForm.invalid) {
       return;
     }
-    this.rol = new RolDTO();
     this.Usuario = new UsuarioDTO();
     this.Usuario.nombre = this.gestionarUsuarioForm.controls.nombre.value;
     this.Usuario.apellido = this.gestionarUsuarioForm.controls.apellido.value;
     this.Usuario.email = this.gestionarUsuarioForm.controls.email.value;
     this.Usuario.usuario = this.gestionarUsuarioForm.controls.usuario.value;
     this.Usuario.contrasena = this.gestionarUsuarioForm.controls.password.value;
-    this.rol.nombre = this.gestionarUsuarioForm.controls.rol.value;
+    this.roles.forEach(element => {
+      if(element.nombre === this.gestionarUsuarioForm.controls.rol.value){
+        this.rol = element;
+      }
+    });
+    console.log(JSON.stringify(this.rol));
     this.Usuario.rol = this.rol;
       this.Usuarioservice.crearUsuario(this.Usuario).subscribe(usuario => {
           Swal.fire(
@@ -73,6 +80,12 @@ export class UsuarioFormComponent implements OnInit {
           );
           this.router.navigate(['colaboradores']);
         })
+  }
+
+  getRoles() {
+    this.Usuarioservice.getRoles().subscribe(roles => {
+      this.roles = roles;
+    })
   }
 
   /**

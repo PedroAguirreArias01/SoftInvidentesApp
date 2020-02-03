@@ -7,6 +7,7 @@ import { NormativaFormComponent } from './normativa-form/normativa-form.componen
 import { UsuarioFormComponent } from './usuario/usuario-form.component';
 import { QuienesSomosComponent } from './quienes-somos/quienes-somos.component';
 import { PoliticasComponent } from './politicas/politicas.component';
+import { GestionarRolComponent } from './gestionar-rol/gestionar-rol.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path: 'normativaForm', component: NormativaFormComponent},
   {path: 'cearColaborador', component: UsuarioFormComponent},
   {path: 'quienesSomos', component: QuienesSomosComponent},
-  {path: 'politicas', component: PoliticasComponent}
+  {path: 'politicas', component: PoliticasComponent},
+  {path: 'gestionarRol', component: GestionarRolComponent}
 
 ]
 

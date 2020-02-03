@@ -64,10 +64,14 @@
                         <mat-form-field>
                             <mat-select placeholder="Tipo de usuario" id="rol"
                                 formControlName="rol" aria-label="Rol">
-                                <mat-option value="ADMINISTRADOR" aria-label="Administrador">Administrador</mat-option>
-                                <mat-option value="COLABORADOR" aria-label="Colaborador">Colaborador</mat-option>
+                                <mat-option aria-label="Administrador" *ngFor = "let rol of roles" value="{{rol.nombre}}" >{{rol.nombre}}</mat-option>
+                                <!-- <mat-option value="COLABORADOR" aria-label="Colaborador">Colaborador</mat-option> -->
                             </mat-select>
                         </mat-form-field>
+                    </div>
+                    <div class="col-sm-6">
+                        <button matTooltip="Crear rol" mat-raised-button color="primary"
+                            aria-label="Crear rol" routerLink="/gestionarRol">Crear rol</button>
                     </div>
                 </div>
                 <div class="row my-5">

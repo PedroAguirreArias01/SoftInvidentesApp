@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            Gestionar roles de usuario
+        </div>
+        <div class="card-body">
+            <form [formGroup]="gestionarRolForm">
+                <div class="row">
+                    <div class="col-lg-4"></div>
+                    <div class="col-lg-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Nombre del rol</mat-label>
+                            <input class="form-control" matInput placeholder="Nombre del rol" aria-placeholder="Nombres"
+                                aria-label="Nombre del rol" class="form-control" formControlName="nombre">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4"></div>
+                    <div class="col-lg-4">
+                        <button matTooltip="Crear rol" mat-raised-button color="primary" aria-label="Crear rol"
+                            (click)="crearRol()">Crear rol</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
