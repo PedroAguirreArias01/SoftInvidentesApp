@@ -8,6 +8,7 @@ import { UsuarioFormComponent } from './usuario/usuario-form.component';
 import { QuienesSomosComponent } from './quienes-somos/quienes-somos.component';
 import { PoliticasComponent } from './politicas/politicas.component';
 import { GestionarRolComponent } from './gestionar-rol/gestionar-rol.component';
+import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
@@ -19,8 +20,8 @@ const routes: Routes = [
   {path: 'cearColaborador', component: UsuarioFormComponent},
   {path: 'quienesSomos', component: QuienesSomosComponent},
   {path: 'politicas', component: PoliticasComponent},
-  {path: 'gestionarRol', component: GestionarRolComponent}
-
+  {path: 'gestionarRol', component: GestionarRolComponent},
+  {path: 'login', component: LoginComponent},
 ]
 
 @NgModule({
