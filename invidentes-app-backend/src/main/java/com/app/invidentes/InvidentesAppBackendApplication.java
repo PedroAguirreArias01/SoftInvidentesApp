@@ -11,9 +11,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
  *
  */
 @CrossOrigin(origins = {"http://localhost:4200"})
-@SpringBootApplication
+@SpringBootApplication 
 public class InvidentesAppBackendApplication {
 
+	/**
+	 * Ajecuta la clase estatica SpringApplication
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(InvidentesAppBackendApplication.class, args);
 	}
