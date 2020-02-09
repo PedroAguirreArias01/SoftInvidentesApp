@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.invidentes.models.dao.IPersonaDAO;
+import com.app.invidentes.models.entity.Persona;
 import com.app.invidentes.models.entity.Pqrs;
 import com.app.invidentes.models.services.IPqrsService;
 
@@ -21,6 +23,12 @@ import com.app.invidentes.models.services.IPqrsService;
 @CrossOrigin(origins = "http://localhost:4200")
 public class PqrsRestController {
 
+	/**
+	 * Atributo que representa la crud de la persona 
+	 */
+	@Autowired
+	private IPersonaDAO personaDAO;
+	
 	/**
 	 * Inyeccion de dependencias 
 	 */
@@ -35,6 +43,12 @@ public class PqrsRestController {
 	@PostMapping("/pqrs")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Pqrs crear(@RequestBody Pqrs pqrs) {
+//		Persona personaActual = pqrs.getPersona();
+//		Persona persona = new Persona();
+//		persona.setApellido(personaActual.getApellido());
+//		persona.setDireccion(personaActual.getDireccion());
+//		persona.setNombre(personaActual.getNombre());
+//		personaDAO.save(persona);
 		 return pqrsService.save(pqrs);
 	}
 	
@@ -43,7 +57,7 @@ public class PqrsRestController {
 	public Pqrs update(@RequestBody Pqrs pqrs, @PathVariable Long id) {
 		Pqrs pqrsActual = pqrsService.findById(id);
 		pqrsActual.setDescripcion(pqrs.getDescripcion());
-		pqrsActual.setPersona(pqrs.getPersona());
+//		pqrsActual.setPersona(pqrs.getPersona());
 		pqrs.setRespuestas(pqrs.getRespuestas());
 		pqrs.setTipoPqrsEnum(pqrs.getTipoPqrsEnum());
 		return this.pqrsService.save(pqrsActual);

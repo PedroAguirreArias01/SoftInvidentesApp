@@ -22,6 +22,10 @@ export class UsuarioDTO {
      */
     public createAt: Date;
     /**
+     * Atributo que representa el estado del usuario
+     */
+    public estadoEnum: string;
+    /**
      * Atributo que representa el email del usuario
      */
     public email: string;

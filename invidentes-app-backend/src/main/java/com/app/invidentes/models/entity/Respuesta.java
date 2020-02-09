@@ -5,10 +5,11 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 /**
  * Clase que representa las respuestas a las pqrs
@@ -41,7 +42,7 @@ public class Respuesta implements Serializable{
     /**
      * Atributo que representa la persona quien realizo la respuesta
      */
-    @ManyToOne
+    @OneToMany(fetch = FetchType.EAGER)
     private Persona persona;
     
     /**

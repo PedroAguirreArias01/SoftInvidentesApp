@@ -26,6 +26,10 @@ public class Rol implements Serializable {
 
 	@Column(unique = true, nullable = false, length = 50)
 	private String nombre;
+	
+	public Rol() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public Long getId() {
 		return id;
