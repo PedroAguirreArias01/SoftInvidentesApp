@@ -21,11 +21,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 //--------------paginado-------------------
 import { NgxPaginationModule } from 'ngx-pagination';
+//-------------modulos----------------
 import { QuienesSomosComponent } from './quienes-somos/quienes-somos.component';
 import { PoliticasComponent } from './politicas/politicas.component';
 import { GestionarRolComponent } from './gestionar-rol/gestionar-rol.component';
 import { GestionarContenidoComponent } from './gestionar-contenido/gestionar-contenido.component';
-
+import { MenuVerticalComponent } from './menu-vertical/menu-vertical.component';
+//---------------flex layout
+import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +43,8 @@ import { GestionarContenidoComponent } from './gestionar-contenido/gestionar-con
     QuienesSomosComponent,
     PoliticasComponent,
     GestionarRolComponent,
-    GestionarContenidoComponent
+    GestionarContenidoComponent,
+    MenuVerticalComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +54,8 @@ import { GestionarContenidoComponent } from './gestionar-contenido/gestionar-con
     ReactiveFormsModule,
     HttpClientModule,
     NgxPaginationModule,
-    AngularMaterial
+    AngularMaterial,
+    FlexLayoutModule
     
   ],
   exports: [
