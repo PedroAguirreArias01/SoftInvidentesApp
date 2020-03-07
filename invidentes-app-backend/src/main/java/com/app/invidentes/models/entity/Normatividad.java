@@ -60,9 +60,9 @@ public class Normatividad implements Serializable{
 	/**
 	 * Atrbuto que representa el usuario que creo dicha normatividad
 	 */
-	@ManyToOne
-	private Usuario usuario;
-	
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	private Usuario usuario;
+//	
 	/**
 	 * Contructor de la calse normatividad
 	 */
@@ -118,11 +118,11 @@ public class Normatividad implements Serializable{
 		this.tipoNormativaEnum = tipoNormativaEnum;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
+//	public Usuario getUsuario() {
+//		return usuario;
+//	}
+//
+//	public void setUsuario(Usuario usuario) {
+//		this.usuario = usuario;
+//	}
 }

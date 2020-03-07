@@ -79,7 +79,10 @@ public class Usuario implements Serializable {
 	@OneToOne(cascade = CascadeType.DETACH)
 	private Rol rol;
 	
-
+	public Usuario() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	// -----------------------------------------------------------------------
 	/**
 	 * Metodo que se encarga de agrgar el estado al colaborador
@@ -161,6 +164,76 @@ public class Usuario implements Serializable {
 	
 	public void setRol(Rol rol) {
 		this.rol = rol;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((apellido == null) ? 0 : apellido.hashCode());
+		result = prime * result + ((contrasena == null) ? 0 : contrasena.hashCode());
+		result = prime * result + ((createAt == null) ? 0 : createAt.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((estadoEnum == null) ? 0 : estadoEnum.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+		result = prime * result + ((rol == null) ? 0 : rol.hashCode());
+		result = prime * result + ((usuario == null) ? 0 : usuario.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuario other = (Usuario) obj;
+		if (apellido == null) {
+			if (other.apellido != null)
+				return false;
+		} else if (!apellido.equals(other.apellido))
+			return false;
+		if (contrasena == null) {
+			if (other.contrasena != null)
+				return false;
+		} else if (!contrasena.equals(other.contrasena))
+			return false;
+		if (createAt == null) {
+			if (other.createAt != null)
+				return false;
+		} else if (!createAt.equals(other.createAt))
+			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (estadoEnum != other.estadoEnum)
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (nombre == null) {
+			if (other.nombre != null)
+				return false;
+		} else if (!nombre.equals(other.nombre))
+			return false;
+		if (rol == null) {
+			if (other.rol != null)
+				return false;
+		} else if (!rol.equals(other.rol))
+			return false;
+		if (usuario == null) {
+			if (other.usuario != null)
+				return false;
+		} else if (!usuario.equals(other.usuario))
+			return false;
+		return true;
 	}
 
 }

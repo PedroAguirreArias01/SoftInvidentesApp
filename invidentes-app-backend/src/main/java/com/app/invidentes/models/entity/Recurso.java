@@ -37,6 +37,10 @@ public class Recurso implements Serializable{
 	@Lob
 	private Byte[] data;
 	
+	public Recurso() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	/**
 	 * Metodo que obtiene el id de un recurso
 	 * @return

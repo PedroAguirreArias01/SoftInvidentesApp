@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -17,6 +18,8 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "PQRS")
@@ -49,13 +52,14 @@ public class Pqrs implements Serializable{
     /**
      * Lista de respuestas realizadas por los usuarios
      */
-    @OneToMany
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "pqrs_id")
     private List<Respuesta> respuestas;
     /**
      * Atrbuto que representa a la persona quien realiza la pregunta queja reclamo o sugerencia
      */
-    @OneToMany(fetch = FetchType.LAZY)
-    private Persona persona;
+//    private Persona persona;
     
     /**
      * Atributo que representa la fecha de creacion de la pqrs
@@ -66,8 +70,10 @@ public class Pqrs implements Serializable{
     /**
      * Atributo que representa la url de los archivos
      */
-    @Lob
-    private Byte[] recursos;
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "pqrs_id")
+    private List<Recurso> recursos;
     
     public Pqrs() {
 		// TODO Auto-generated constructor stub
@@ -105,13 +111,13 @@ public class Pqrs implements Serializable{
 		this.respuestas = respuestas;
 	}
 
-	public Persona getPersona() {
-		return persona;
-	}
-
-	public void setPersona(Persona persona) {
-		this.persona = persona;
-	}
+//	public Persona getPersona() {
+//		return persona;
+//	}
+//
+//	public void setPersona(Persona persona) {
+//		this.persona = persona;
+//	}
 
 	public LocalDate getFechaCreacion() {
 		return fechaCreacion;
@@ -121,11 +127,11 @@ public class Pqrs implements Serializable{
 		this.fechaCreacion = fechaCreacion;
 	}
 
-	public Byte[] getRecursos() {
+	public List<Recurso> getRecursos() {
 		return recursos;
 	}
 
-	public void setUrlRecursos(Byte[] recursos) {
+	public void setUrlRecursos(List<Recurso> recursos) {
 		this.recursos = recursos;
 	}
 }

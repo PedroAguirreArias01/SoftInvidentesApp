@@ -2,15 +2,20 @@ package com.app.invidentes.models.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 /**
  * Clase que representa las respuestas a las pqrs
  * @author pedro
@@ -42,8 +47,7 @@ public class Respuesta implements Serializable{
     /**
      * Atributo que representa la persona quien realizo la respuesta
      */
-    @OneToMany(fetch = FetchType.EAGER)
-    private Persona persona;
+//    private Persona persona;
     
     /**
      * Atributo que representa la fecha de creacion de la respuesta
@@ -54,7 +58,10 @@ public class Respuesta implements Serializable{
     /**
      * Atributo que representa los archivos asociados a la respuesta
      */
-    private String urlRecursos;
+    @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "respuesta_id")
+    private List<Recurso> recursos;
     
     public Respuesta() {
 		// TODO Auto-generated constructor stub
@@ -84,13 +91,13 @@ public class Respuesta implements Serializable{
 		this.calificacion = calificacion;
 	}
 
-	public Persona getPersona() {
-		return persona;
-	}
-
-	public void setPersona(Persona persona) {
-		this.persona = persona;
-	}
+//	public Persona getPersona() {
+//		return persona;
+//	}
+//
+//	public void setPersona(Persona persona) {
+//		this.persona = persona;
+//	}
 
 	public LocalDate getFechaCreacion() {
 		return fechaCreacion;
@@ -100,11 +107,11 @@ public class Respuesta implements Serializable{
 		this.fechaCreacion = fechaCreacion;
 	}
 
-	public String getUrlRecursos() {
-		return urlRecursos;
+	public List<Recurso> getUrlRecursos() {
+		return recursos;
 	}
 
-	public void setUrlRecursos(String urlRecursos) {
-		this.urlRecursos = urlRecursos;
+	public void setUrlRecursos(List<Recurso> recursos) {
+		this.recursos = recursos;
 	}
 }
