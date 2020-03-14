@@ -68,6 +68,11 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-lg-12">
+                            <app-cargar-archivos (complete)="onFileComplete($event)"></app-cargar-archivos>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-sm-6">
                             <mat-checkbox>He leído y acepto los</mat-checkbox> <a routerLink="/politicas">Términos y condiciones</a>
                         </div>

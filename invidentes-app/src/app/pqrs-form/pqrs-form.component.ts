@@ -162,4 +162,11 @@ export class PqrsFormComponent implements OnInit {
    });
  }
 
+ /**
+  * Se muestra los datos cuando son cargados en el evento emitter
+  */
+ onFileComplete(data: any) {
+  console.log(data);
+}
+
 }

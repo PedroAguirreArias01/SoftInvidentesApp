@@ -1,8 +1,47 @@
-<div class="container">
-  <div class="card">
-    <div class="row">
-      <div class="col-sm-4" *ngFor="let norma of normatividad;let i=index;">
-        <mat-card class="example-card">
+<div class="my-5" fxLayout fxLayout.xs="column" fxLayoutGap="10px" fxLayoutGap.xs="0">
+  <div fxFlex="20%">
+    <mat-card>
+      <mat-card-header class="text-primary">
+        <mat-card-title>Menu Normatividad</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item class="my-5">
+            <button mat-raised-button color="primary">
+              Leyes
+            </button>
+          </mat-list-item>
+          <mat-list-item class="my-5">
+            <button mat-raised-button color="primary">
+              Decretos
+            </button>
+          </mat-list-item>
+          <mat-list-item class="my-5">
+            <button mat-raised-button color="primary">
+              Resolución
+            </button>
+          </mat-list-item>
+          <mat-list-item class="my-5">
+            <button mat-raised-button color="primary">
+              Ordenanzas
+            </button>
+          </mat-list-item>
+          <mat-list-item class="my-5">
+            <button mat-raised-button color="primary">
+              Acuerdos
+            </button>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div fxFlex>
+    <mat-card>
+      <mat-card-header class="text-primary">
+        <mat-card-title>Leyes</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-card class="example-card" *ngFor="let norma of normatividad;let i=index;">
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
             <mat-card-title>{{norma.titulo}}</mat-card-title>
@@ -21,8 +60,8 @@
               (click)="i = !i">
               <!-- <mat-icon *ngIf="card10Expanded">keyboard_arrow_up</mat-icon>
               <mat-icon *ngIf="!card10Expanded">keyboard_arrow_down</mat-icon> -->
-             <samp  *ngIf="!i">Ver Más</samp>
-             <samp  *ngIf="i">Ver Menos</samp>
+              <samp *ngIf="!i">Ver Más</samp>
+              <samp *ngIf="i">Ver Menos</samp>
             </button>
           </mat-card-actions>
           <div class="card-expand-area" *ngIf="i" [@expandCollapse]>
@@ -31,7 +70,7 @@
             </div>
           </div>
         </mat-card>
-      </div>
-    </div>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>

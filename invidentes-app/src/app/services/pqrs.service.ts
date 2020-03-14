@@ -2,6 +2,7 @@ import { Injectable, Injector } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PqrsDTO } from '../dto/pqrs.dto';
+import { URL_SERVIDOR } from 'src/assets/constantes/configServer';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class PqrsService {
   /**
    * Url que define la localizacion de los recursos 
    */
-  private urlEndPoint: string = 'http://localhost:8080/pqrs/';
+  private urlEndPoint: string = URL_SERVIDOR+'pqrs/';
 
   constructor(injector: Injector, private http : HttpClient) { }
 

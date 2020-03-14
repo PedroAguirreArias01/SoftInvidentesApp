@@ -2,6 +2,7 @@ import { Injectable, Injector } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { NormatividadDTO } from '../dto/normatividad.dto';
+import { URL_SERVIDOR } from 'src/assets/constantes/configServer';
 /**
  * @description clase que se encarga de gestionar los  servicios de normatividad
  * @author Pedro Aguirre Arias
@@ -13,7 +14,7 @@ export class NormatividadService {
   /**
    * Url que define la localizacion de los recursos 
    */
-  private urlEndPoint: string = 'http://localhost:8080/normatividad/';
+  private urlEndPoint: string = URL_SERVIDOR+'normatividad/';
 
   constructor(injector: Injector, private http : HttpClient) { }
 

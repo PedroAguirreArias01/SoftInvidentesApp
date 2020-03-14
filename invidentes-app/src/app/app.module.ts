@@ -13,8 +13,6 @@ import { PqrsFormComponent } from './pqrs-form/pqrs-form.component';
 import { NormativaFormComponent } from './normativa-form/normativa-form.component';
 //TODO
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginComponent } from './login/login.component';
-import { UsuarioFormComponent } from './usuario/usuario-form.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -22,11 +20,13 @@ import { HttpClientModule } from '@angular/common/http';
 //--------------paginado-------------------
 import { NgxPaginationModule } from 'ngx-pagination';
 //-------------modulos----------------
+import { LoginComponent } from './login/login.component';
+import { UsuarioFormComponent } from './usuario/usuario-form.component';
 import { QuienesSomosComponent } from './quienes-somos/quienes-somos.component';
 import { PoliticasComponent } from './politicas/politicas.component';
 import { GestionarRolComponent } from './gestionar-rol/gestionar-rol.component';
 import { GestionarContenidoComponent } from './gestionar-contenido/gestionar-contenido.component';
-import { MenuVerticalComponent } from './menu-vertical/menu-vertical.component';
+import { MenuComponent } from './menu/menu.component';
 //---------------flex layout
 import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
@@ -44,7 +44,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     PoliticasComponent,
     GestionarRolComponent,
     GestionarContenidoComponent,
-    MenuVerticalComponent
+    MenuComponent,
+    CargarArchivosComponent
   ],
   imports: [
     BrowserModule,

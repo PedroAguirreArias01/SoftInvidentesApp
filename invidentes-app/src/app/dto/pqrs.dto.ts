@@ -1,6 +1,6 @@
 import { RespuestaDTO } from './respuesta.dto';
 import { PersonaDTO } from './persona.dto';
-
+import {RecursoDTO} from './recurso.dto'
 /**
  * @author Pedro Aguirre Arias <pedro.aguirre@uptc.edu.co>
  * @description clase que representa la entidad de preguntas quejas reclamos o sujerencias
@@ -32,5 +32,10 @@ export class PqrsDTO {
      * @description Atributo que representa a la persona que realiza la queja reclamo o sujerencia
      */
     public persona: PersonaDTO;
+
+    /**
+     * @description Atributo que representa los recursos agregado a la pqrs
+     */
+    public recursos: RecursoDTO[];
 
 }

@@ -5,6 +5,7 @@ import {catchError} from 'rxjs/operators';
 import { HttpClient } from "@angular/common/http";
 import Swal from 'sweetalert2';
 import { RolDTO } from '../dto/rol.dto';
+import { URL_SERVIDOR } from 'src/assets/constantes/configServer';
 /**
  * @description clase que se encarga de gestionar los  servicios de Usuario
  * @author Pedro Aguirre Arias <pedro.aguirre@uptc.edu.co>
@@ -17,12 +18,12 @@ export class UsuarioService {
   /**
    * Url que define la localizacion de los recursos 
    */
-  private urlEndPoint: string = 'http://localhost:8080/api/usuarios/';
+  private urlEndPoint: string = URL_SERVIDOR+'api/usuarios/';
 
   /**
    * Atributo que reprsenta la localizacion de ls recurssos del rol del usuario
    */
-  private utlRol: string = 'http://localhost:8080/api/usuarios/rol/';
+  private utlRol: string = URL_SERVIDOR+'api/usuarios/rol/';
 
    /**
    * @description contructor de la clase
