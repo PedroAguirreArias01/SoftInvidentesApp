@@ -35,7 +35,7 @@ public class Recurso implements Serializable{
 	 * Atributo que representa la data del recurso
 	 */
 	@Lob
-	private Byte[] data;
+	private byte[] data;
 	
 	public Recurso() {
 		// TODO Auto-generated constructor stub
@@ -91,14 +91,14 @@ public class Recurso implements Serializable{
 	 * Metodo que obtiene la data del recurso
 	 * @return
 	 */
-	public Byte[] getData() {
+	public byte[] getData() {
 		return data;
 	}
 	/**
 	 * Metodo que modifica la data del recurso
 	 * @param data
 	 */
-	public void setData(Byte[] data) {
+	public void setData(byte[] data) {
 		this.data = data;
 	}
 	

@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 /**
  * Clase que representa la tabla normatividad
  * @author pedro
@@ -60,9 +62,10 @@ public class Normatividad implements Serializable{
 	/**
 	 * Atrbuto que representa el usuario que creo dicha normatividad
 	 */
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	private Usuario usuario;
-//	
+	@JsonIgnoreProperties(value={"usuarios", "hibernateLazyInitializer", "handler"}, allowSetters=true)
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Usuario usuario;
+	
 	/**
 	 * Contructor de la calse normatividad
 	 */
@@ -118,11 +121,11 @@ public class Normatividad implements Serializable{
 		this.tipoNormativaEnum = tipoNormativaEnum;
 	}
 
-//	public Usuario getUsuario() {
-//		return usuario;
-//	}
-//
-//	public void setUsuario(Usuario usuario) {
-//		this.usuario = usuario;
-//	}
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 }

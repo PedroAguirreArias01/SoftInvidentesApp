@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
  * @author pedro
  *
  */
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = {"*"})
 @SpringBootApplication 
 public class InvidentesAppBackendApplication {
 
