@@ -11,7 +11,7 @@ import { UsuarioService } from "./services/usuario.service";
 import { PaginaPricipalComponent } from './pagina-pricipal/pagina-pricipal.component';
 import { PqrsFormComponent } from './pqrs-form/pqrs-form.component';
 import { NormativaFormComponent } from './normativa-form/normativa-form.component';
-//TODO
+//Formularios reactivos 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -29,6 +29,7 @@ import { GestionarContenidoComponent } from './gestionar-contenido/gestionar-con
 import { MenuComponent } from './menu/menu.component';
 //---------------flex layout
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { CargarArchivosComponent } from './cargar-archivos/cargar-archivos.component';
 @NgModule({
   declarations: [
     AppComponent,
