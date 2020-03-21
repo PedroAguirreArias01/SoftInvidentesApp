@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.invidentes.models.services.IUsuarioService;
+import com.app.invidentes.interfaceService.IUsuarioService;
 import com.app.invidentes.models.dao.IRolDAO;
 import com.app.invidentes.models.entity.Rol;
 import com.app.invidentes.models.entity.Usuario;

@@ -1,4 +1,4 @@
-package com.app.invidentes.models.services;
+package com.app.invidentes.interfaceService;
 
 import java.util.List;
 

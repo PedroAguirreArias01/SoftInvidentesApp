@@ -24,13 +24,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.app.invidentes.interfaceService.IPqrsService;
 import com.app.invidentes.models.dao.IPersonaDAO;
 import com.app.invidentes.models.dao.IRecursoDAO;
 import com.app.invidentes.models.entity.Persona;
 import com.app.invidentes.models.entity.Pqrs;
 import com.app.invidentes.models.entity.Recurso;
 import com.app.invidentes.models.entity.Usuario;
-import com.app.invidentes.models.services.IPqrsService;
 
 @RestController
 @CrossOrigin(origins = "*")

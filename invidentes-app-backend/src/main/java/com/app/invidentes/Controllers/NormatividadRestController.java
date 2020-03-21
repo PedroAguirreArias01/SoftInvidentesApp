@@ -11,9 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.app.invidentes.interfaceService.INormatividadService;
 import com.app.invidentes.models.entity.Normatividad;
 import com.app.invidentes.models.entity.ResultadoDTO;
-import com.app.invidentes.models.services.INormatividadService;
 
 @RestController
 @CrossOrigin(origins = "*")

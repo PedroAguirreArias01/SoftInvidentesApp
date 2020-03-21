@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.app.invidentes.interfaceService.IPqrsService;
 import com.app.invidentes.models.dao.IPqrsDAO;
 import com.app.invidentes.models.entity.Pqrs;
 
