@@ -1,5 +1,6 @@
 package com.app.invidentes.models.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,9 +14,11 @@ public class QuienesSomos {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(name = "titulo", length = 10000)
 	private String titulo;
+	@Column(name = "descripcion", length = 10000)
 	private String descripcion;
-	private Recurso img;
+	//private Recurso img;
 	
 	public QuienesSomos() {
 		
@@ -45,13 +48,13 @@ public class QuienesSomos {
 		this.descripcion = descripcion;
 	}
 
-	public Recurso getImg() {
+	/**public Recurso getImg() {
 		return img;
 	}
 
 	public void setImg(Recurso img) {
 		this.img = img;
-	}
+	}*/
 	
 
 

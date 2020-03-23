@@ -30,6 +30,8 @@ import { MenuComponent } from './menu/menu.component';
 //---------------flex layout
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CargarArchivosComponent } from './cargar-archivos/cargar-archivos.component';
+import { AdminQuienesSomosComponent } from './admin-quienes-somos/admin-quienes-somos.component';
+import { AdministracionComponent } from './administracion/administracion.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +48,9 @@ import { CargarArchivosComponent } from './cargar-archivos/cargar-archivos.compo
     GestionarRolComponent,
     GestionarContenidoComponent,
     MenuComponent,
-    CargarArchivosComponent
+    CargarArchivosComponent,
+    AdminQuienesSomosComponent,
+    AdministracionComponent
   ],
   imports: [
     BrowserModule,

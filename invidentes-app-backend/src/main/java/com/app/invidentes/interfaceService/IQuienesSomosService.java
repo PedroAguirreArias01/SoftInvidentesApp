@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.app.invidentes.models.entity.QuienesSomos;
 
-public interface IQuienesSomos {
+public interface IQuienesSomosService {
 	
 	/**
 	 * Metodo que obtiene toda la inforfmacion de quienes somos

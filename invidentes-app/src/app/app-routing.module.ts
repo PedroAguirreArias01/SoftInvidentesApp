@@ -9,6 +9,7 @@ import { QuienesSomosComponent } from './quienes-somos/quienes-somos.component';
 import { PoliticasComponent } from './politicas/politicas.component';
 import { GestionarRolComponent } from './gestionar-rol/gestionar-rol.component';
 import { LoginComponent } from './login/login.component';
+import { AdministracionComponent } from './administracion/administracion.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'politicas', component: PoliticasComponent},
   {path: 'gestionarRol', component: GestionarRolComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'administracion', component: AdministracionComponent},
 ]
 
 @NgModule({
