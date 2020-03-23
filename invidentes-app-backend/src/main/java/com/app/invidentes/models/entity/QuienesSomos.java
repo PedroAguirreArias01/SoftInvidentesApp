@@ -1,3 +1,4 @@
+
 package com.app.invidentes.models.entity;
 
 import javax.persistence.Column;

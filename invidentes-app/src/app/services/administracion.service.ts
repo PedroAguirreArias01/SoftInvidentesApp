@@ -2,7 +2,9 @@ import { Injectable, Injector } from '@angular/core';
 import { URL_SERVIDOR } from 'src/assets/constantes/configServer';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { QuienesSomos } from '../dto/quienesSomos.dto';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +28,12 @@ export class AdministracionService {
   }
 
   consultarTodos(): Observable<any>{
-    return this.http.get(this.urlEndPoint);
+    return this.http.get(this.urlEndPoint).pipe(
+      catchError(e => {
+      Swal.fire('Error al cargar los usuarios', e.error.mensaje, 'error');
+      return throwError(e);
+      })
+      );
   }
 
   editarQuienesSomos(quienesSomos: QuienesSomos): Observable<any>{
