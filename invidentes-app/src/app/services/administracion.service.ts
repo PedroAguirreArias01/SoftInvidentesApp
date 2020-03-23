@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class AdministracionService {
 
-    /**
+  /**
    * Url que define la localizacion de los recursos 
    */
   private urlEndPoint: string = URL_SERVIDOR+'quienSomos/';
@@ -22,9 +22,14 @@ export class AdministracionService {
   constructor(injector: Injector, private http : HttpClient) { }
 
   guardarQuienesSomos(quienesSomos:QuienesSomos):Observable<any>{
-
     return this.http.post(this.urlEndPoint,quienesSomos,this.httpOptions);
   }
 
-  
+  consultarTodos(): Observable<any>{
+    return this.http.get(this.urlEndPoint);
+  }
+
+  editarQuienesSomos(quienesSomos: QuienesSomos): Observable<any>{
+    return this.http.put(this.urlEndPoint, quienesSomos);
+  }
 }

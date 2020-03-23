@@ -12,6 +12,7 @@ export class AdminQuienesSomosComponent implements OnInit {
   public quienesSomos:QuienesSomos;
 
   public formControlQuienesSomos: FormGroup; // este atributo tiene los datos del fomulario 
+  public listQuienesSomos: Array<QuienesSomos>=[];
 
   constructor(private formBuilder: FormBuilder,private adminService:AdministracionService) {
     this.formControlQuienesSomos = formBuilder.group({
@@ -21,6 +22,7 @@ export class AdminQuienesSomosComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.obtenerTodosQuienesSomos();
   }
   
   guardar():void{
@@ -32,10 +34,16 @@ export class AdminQuienesSomosComponent implements OnInit {
       this.limpiarFormulario();
     });
   }
+
   limpiarFormulario(){
     this.formControlQuienesSomos.controls.titulo.setValue(null);
     this.formControlQuienesSomos.controls.descripcion.setValue(null);
   }
 
+  obtenerTodosQuienesSomos():void{
+    this.adminService.consultarTodos().subscribe(quienesSomos => {
+      this.quienesSomos = quienesSomos;
+    })
+  }
 
 }

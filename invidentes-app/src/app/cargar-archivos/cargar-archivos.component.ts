@@ -68,7 +68,6 @@ export class CargarArchivosComponent implements OnInit {
   private uploadFile(file: FileUploadModel) {
     const fd = new FormData();
     fd.append(this.param, file.data);
-    console.log(file.data)
     const req = new HttpRequest('POST', this.target, file.data, {
       reportProgress: true
     });
@@ -101,6 +100,9 @@ export class CargarArchivosComponent implements OnInit {
     );
   }
 
+  /**
+   * Metodo encargado de cargar los archivos a la lista
+   */
   private uploadFiles() {
     const fileUpload = document.getElementById('fileUpload') as HTMLInputElement;
     fileUpload.value = '';
@@ -110,6 +112,10 @@ export class CargarArchivosComponent implements OnInit {
     });
   }
 
+  /**
+   * Metodo encargado de eliminar el archivo de la lista
+   * @param file 
+   */
   private removeFileFromArray(file: FileUploadModel) {
     const index = this.files.indexOf(file);
     if (index > -1) {
