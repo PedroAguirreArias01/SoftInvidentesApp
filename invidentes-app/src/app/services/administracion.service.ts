@@ -23,10 +23,17 @@ export class AdministracionService {
   
   constructor(injector: Injector, private http : HttpClient) { }
 
+  /**
+   * guarda la informacion de quienes somos
+   * @param quienesSomos 
+   */
   guardarQuienesSomos(quienesSomos:QuienesSomos):Observable<any>{
     return this.http.post(this.urlEndPoint,quienesSomos,this.httpOptions);
   }
 
+  /**
+   * Metodo que consulta la info de quienes somos
+   */
   consultarTodos(): Observable<any>{
     return this.http.get(this.urlEndPoint).pipe(
       catchError(e => {
@@ -36,7 +43,26 @@ export class AdministracionService {
       );
   }
 
-  editarQuienesSomos(quienesSomos: QuienesSomos): Observable<any>{
-    return this.http.put(this.urlEndPoint, quienesSomos);
+  /**
+   *  metodo encargado de actualizar la informacion de quienes somos
+   * @param quienesSomos 
+   */
+  editarQuienesSomos(quienesSomos: QuienesSomos, id: number): Observable<any>{
+    console.log('info: '+quienesSomos+' id: '+id);
+    
+    return this.http.put(`${this.urlEndPoint}${id}`, quienesSomos);
+  }
+
+  /**
+   * Metodo que elimina la info de quienes somos
+   * @param id 
+   */
+  eliminarQuienesSomos(id: number): Observable<any>{
+    return this.http.delete(`${this.urlEndPoint}${id}`).pipe(
+      catchError(e => {
+        Swal.fire('Error al eliminar la información', e.error.mensaje, 'error');
+        return throwError(e);
+      })
+    );
   }
 }

@@ -14,8 +14,9 @@
         <br>
         <div class="row">
           <div class="col-lg-4">
-            <input type="submit" value="Guardar" class="btn btn-success btn-lg" (click)="guardar()" />
-            <input type="submit" value="Cancelar" class="btn btn-danger btn-lg mx-2" />
+            <input type="submit" value="Editar" class="btn btn-success btn-lg" (click)="guardar()" *ngIf="isEditar"/>
+            <input type="submit" value="Guardar" class="btn btn-success btn-lg" (click)="guardar()" *ngIf="!isEditar"/>
+            <input type="submit" value="Cancelar" class="btn btn-danger btn-lg mx-2" (click)= "cancelar()"  />
           </div>
           <div class="col-lg-4">
           </div>
@@ -33,23 +34,24 @@
         <table class="table">
           <thead class="thead-dark">
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">Título</th>
-              <th scope="col">Descripción</th>
-              <th scope="col">Aciones</th>
+              <th>#</th>
+              <th>Título</th>
+              <th>Descripción</th>
+              <th>Aciones</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let quienesSomos of listQuienesSomos">
+            <tr *ngFor="let quienesSomos of listQuienesSomos | paginate: { itemsPerPage: 7, currentPage: pageActual}">
               <th>{{quienesSomos.id}}</th>
               <th>{{quienesSomos.titulo}}</th>
               <th>{{quienesSomos.descripcion}}</th>
               <th>
-                <button class="btn btn-primary">Editar</button>
-                <button class="btn btn-danger">Eliminar</button>
+                <button class="btn btn-primary" (click)= "editar(quienesSomos)">Editar</button>
+                <button class="btn btn-danger" (click)= "eliminar(quienesSomos.id)">Eliminar</button>
               </th>
             </tr>
           </tbody>
+          <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
         </table>
       </div>
     </div>

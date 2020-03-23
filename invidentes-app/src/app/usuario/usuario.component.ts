@@ -42,7 +42,8 @@ export class UsuarioComponent implements OnInit {
    */
   getUsuarios(){
     this.usuarioService.getUsuarios().subscribe(
-      usuarios =>{ this.usuarios = usuarios
+      usuarios =>{ 
+          this.usuarios = usuarios
       }
     );
   }
