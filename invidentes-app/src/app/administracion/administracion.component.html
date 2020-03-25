@@ -1,1 +1,43 @@
-<app-admin-quienes-somos></app-admin-quienes-somos>
+<div fxLayout fxLayout.xs="column" fxLayoutGap="10px" fxLayoutGap.xs="0">
+    <div fxFlex="20%" fxLayoutAlign="start none">
+        <mat-card>
+            <mat-card-header class="text-primary">
+                <mat-card-title>Administración</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-list>
+                    <mat-list-item class="my-5">
+                        <button mat-raised-button color="primary" (click)= "controlarTabUsuarios()" >
+                            Usuarios
+                        </button>
+                    </mat-list-item>
+                    <mat-list-item class="my-5">
+                        <button mat-raised-button color="primary" (click)= "controlarTabNormatividad()" >
+                            Normatividad
+                        </button>
+                    </mat-list-item>
+                    <mat-list-item class="my-5">
+                        <button mat-raised-button color="primary" (click)= "controlarTabPqrs()" >
+                            PQRS
+                        </button>
+                    </mat-list-item>
+                    <mat-list-item class="my-5">
+                        <button mat-raised-button color="primary" (click)= "controlarTabQuienesSomos()" >
+                            Quienes Somos
+                        </button>
+                    </mat-list-item>
+                    <mat-list-item class="my-5">
+                        <button mat-raised-button color="primary" (click)= "controlarTabNotificaciones()" > 
+                            Notificaciones
+                        </button>
+                    </mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div fxFlex="80%">
+        <app-admin-quienes-somos *ngIf="isQuienesSomos"></app-admin-quienes-somos>
+        <usuario *ngIf="isUsuarios"></usuario>
+        <app-normativa-form *ngIf="isNormatividad"></app-normativa-form>
+    </div>
+</div>
