@@ -1,3 +1,5 @@
+import { TipoNormativaDTO } from './tipoNormativa.dto';
+
 /**
  * Entidad que contiene los atributos de  la normatividad
  * @author Pedro Aguirre Arias <pedro.aguirre@uptc.edu.co>
@@ -19,8 +21,10 @@ export class NormatividadDTO {
 	 * Atributo que representa el contenido total de la informacion
 	 */
 	public contenido: string;
+
 	/**
-	 * Atributo quue representa el tipo de informacion 
+	 * Representa el tipo der informacion normativa 
 	 */
-	public tipoNormativaEnum: string;
+	public tipoNormativa: TipoNormativaDTO;
+	
 }

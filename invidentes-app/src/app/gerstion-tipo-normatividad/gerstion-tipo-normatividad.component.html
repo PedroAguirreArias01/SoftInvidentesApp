@@ -1,0 +1,63 @@
+<div class="card">
+    <div class="card-header">
+        Gestionar Tipo Normatividad
+    </div>
+    <div class="card-body">
+        <form [formGroup]="gestionarTipoNormatividadForm">
+            <div class="row">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6">
+                    <mat-form-field>
+                        <mat-label>Nombre Tipo Normatividad </mat-label>
+                        <input class="form-control" matInput placeholder="Nombre Tipo normatividad"
+                            aria-placeholder="Nombres" aria-label="Nombre del rol" class="form-control"
+                            formControlName="nombre">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-lg-1">
+                    <button matTooltip="Crear Tipo Normatividad" mat-raised-button color="primary"
+                        aria-label="Crear rol" (click)="guardarActualizarNormatividad()">Crear</button>
+                </div>
+                <div class="col-lg-1">
+                    <button aria-label="Cancelar" mat-raised-button color="warn" (click)="cancelar()">Cancelar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card mt-4">
+    <div class="card-header">
+        <h3>Tipo de normatividad</h3>
+    </div>
+    <div class="card-body">
+        <div *ngIf="listaTipoNormatividad?.length===0" role="alert" class="alert alert-info">
+            No hay registros en la base de datos!
+        </div>
+        <table class="table" *ngIf="listaTipoNormatividad?.length>0">
+            <thead class="thead-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Tipo Normatividad</th>
+                    <th>Aciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr
+                    *ngFor="let tipoNorma of listaTipoNormatividad | paginate: { itemsPerPage: 7, currentPage: pageActual}">
+                    <th>{{tipoNorma.id}}</th>
+                    <th>{{tipoNorma.nombre}}</th>
+                    <th>
+                        <button class="btn btn-primary" (click)="editarTipoNormatividad(tipoNorma)">Editar</button>
+                        <button class="btn btn-danger"
+                            (click)="eliminarTipoNormatividad(tipoNorma.id)">Eliminar</button>
+                    </th>
+                </tr>
+            </tbody>
+            <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+        </table>
+    </div>
+</div>

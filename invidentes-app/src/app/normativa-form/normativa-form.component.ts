@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NormatividadService } from '../services/normatividad.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { TipoNormativaDTO } from '../dto/tipoNormativa.dto';
 /**
  * @descripcion clase que se encarga de la gestion normativa
  * @author Pedro Aguirre Arias <pedro.aguirre@uptc.edu.co>
@@ -33,6 +34,12 @@ export class NormativaFormComponent implements OnInit {
   */
  public pageActual: number = 1;
 
+ public listaTipoNormatividad: TipoNormativaDTO[] = [];
+
+public listaNormatividad: NormatividadDTO[] =[];
+
+public idNormatividad: number;
+
  constructor(private fb: FormBuilder, private normatividadservice: NormatividadService,private router: Router ) {
    this.gestionarNormatividadForm = this.fb.group({
      titulo: [null, Validators.required],
@@ -43,6 +50,8 @@ export class NormativaFormComponent implements OnInit {
  }
 
  ngOnInit() {
+   this.obtenerTodaTipoNormatividad();
+   this.obtenerTodaNormatividad();
  }
 
  /**
@@ -56,32 +65,26 @@ export class NormativaFormComponent implements OnInit {
    this.normatividad.titulo = this.gestionarNormatividadForm.controls.titulo.value;
    this.normatividad.descripcion = this.gestionarNormatividadForm.controls.descripcion.value;
    this.normatividad.contenido = this.gestionarNormatividadForm.controls.contenido.value;
-   this.normatividad.tipoNormativaEnum = this.gestionarNormatividadForm.controls.tipoNormativaEnum.value;
+   this.normatividad.tipoNormativa = this.gestionarNormatividadForm.controls.tipoNormativaEnum.value;
    if (!this.editar) {
      console.log(this.normatividad);
-     this.normatividadservice.crear(this.normatividad).subscribe(resultadoDTO => {
-       if (resultadoDTO.exitoso) {
-         Swal.fire(
-           'normatividad creada con exito!',
-           'success'
-         );
-         this.limpiarFormulario();
-         this.router.navigate(['paginaPrincipal']);
+     this.normatividadservice.crear(this.normatividad).subscribe(respuesta => {
+       if(respuesta !== null){
+        this.listaNormatividad.push(respuesta);
+        this.limpiarFormulario();
        }
      }, error => {
        console.log(error);
      });
 
    } else {
-     this.normatividadservice.editar(this.normatividad).subscribe(resultadoDTO => {
-       if (resultadoDTO.exitoso) {
-         Swal.fire(
-           'Información modificada con exito!',
-           'success'
-         );
+     this.normatividad.id = this.idNormatividad;
+     console.log(this.normatividad);
+     this.normatividadservice.editar(this.normatividad).subscribe(resultado => {
+       console.log('editar resultado: '+JSON.stringify(resultado));
          this.limpiarFormulario();
          this.editar = false;
-       }
+         this.obtenerTodaNormatividad();
      });
    }
  }
@@ -91,10 +94,41 @@ export class NormativaFormComponent implements OnInit {
  * @author Pedro Aguirre Arias
  */
  private limpiarFormulario(): void {
-   this.gestionarNormatividadForm.controls.titulo.setValue(null);
-   this.gestionarNormatividadForm.controls.descripcion.setValue(null);
-   this.gestionarNormatividadForm.controls.contenido.setValue(null);
-   this.gestionarNormatividadForm.controls.tipoNormativaEnum.setValue(null);
+   this.gestionarNormatividadForm.reset();
+ }
+
+ public editarNormatividad(normatividad: NormatividadDTO): void{
+   this.editar = true;
+   this.idNormatividad = normatividad.id;
+   this.gestionarNormatividadForm.controls.titulo.setValue(normatividad.titulo);
+   this.gestionarNormatividadForm.controls.descripcion.setValue(normatividad.descripcion);
+   this.gestionarNormatividadForm.controls.contenido.setValue(normatividad.contenido);
+   this.gestionarNormatividadForm.controls.tipoNormativaEnum.setValue(normatividad.tipoNormativa.nombre);
+ }
+
+ public eliminarNormativa(idNormatividad: number): void{
+   this.normatividadservice.eliminar(idNormatividad).subscribe(respuesta => {
+    console.log('esta es la respuesta: '+respuesta);
+    this.obtenerTodaNormatividad();
+   });
+ }
+
+ public obtenerTodaNormatividad(){
+   this.normatividadservice.getNormatividad().subscribe(respuesta =>{
+    console.table(respuesta)
+    this.listaNormatividad = respuesta;
+  })
+ }
+
+ public obtenerTodaTipoNormatividad(){
+   this.normatividadservice.getTipoNormatividad().subscribe(respuesta => {
+     console.table(respuesta)
+     this.listaTipoNormatividad = respuesta;
+   });
+ }
+
+ cancelar(){
+   this.gestionarNormatividadForm.reset();
  }
 
 }

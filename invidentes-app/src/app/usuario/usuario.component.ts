@@ -102,22 +102,4 @@ export class UsuarioComponent implements OnInit {
       })
   }
 
-  /**
-     * @description metodo encargado de actualizar la información del comic
-     * @author Pedro aguirre Arias;
-     * @param comic 
-     */
-   /*  public editarComic(usuario: usuarioDTO): void {
-      this.posComicEdit = posicion;
-      this.gestionarComicForm.controls.nombre.setValue(comic.nombre);
-      this.gestionarComicForm.controls.editorial.setValue(comic.editorial);
-      this.gestionarComicForm.controls.tematica.setValue(comic.tematica);
-      this.gestionarComicForm.controls.coleccion.setValue(comic.coleccion);
-      this.gestionarComicForm.controls.numeroPaginas.setValue(comic.numeroPaginas);
-      this.gestionarComicForm.controls.precio.setValue(comic.precio);
-      this.gestionarComicForm.controls.autores.setValue(comic.autores);
-      this.gestionarComicForm.controls.color.setValue(comic.color);
-      this.editar = true;
-  } */
-
 }

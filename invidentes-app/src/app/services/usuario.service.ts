@@ -23,7 +23,7 @@ export class UsuarioService {
   /**
    * Atributo que reprsenta la localizacion de ls recurssos del rol del usuario
    */
-  private utlRol: string = URL_SERVIDOR+'api/usuarios/rol/';
+  private urlRol: string = URL_SERVIDOR+'api/usuarios/rol/';
 
    /**
    * @description contructor de la clase
@@ -87,7 +87,7 @@ export class UsuarioService {
    * @param rol 
    */
   crearRol(rol: RolDTO): Observable<any> {
-    return this.http.post(this.utlRol, rol).pipe(
+    return this.http.post(this.urlRol, rol).pipe(
       catchError(e => {
         Swal.fire('Error al agregar!', e.error.mensaje, 'error');
         return throwError(e);
@@ -100,9 +100,34 @@ export class UsuarioService {
    * @author Pedro Aguirre Arias <pedro.aguirre@uptc.edu.co>
    */
   getRoles(): Observable<any> {
-    return this.http.get(this.utlRol).pipe(
+    return this.http.get(this.urlRol).pipe(
       catchError(e => {
         Swal.fire('Error al cargar los roles', e.error.mensaje, 'error');
+        return throwError(e);
+      })
+    );
+  }
+
+  /**
+   * @description Metodo encargado de modificar la informacion del rol
+   */
+  editarRol(rol: RolDTO): Observable<any> {
+    return this.http.put(`${this.urlRol}${rol.id}`, rol).pipe(
+      catchError(e => {
+        Swal.fire('Error al editar', e.error.mensaje, 'error');
+        return throwError(e);
+      })
+    );
+  }
+
+  /**
+   * @description Metodod encargado de elimanar el rol
+   * @param id 
+   */
+  eliminarRol(id: number): Observable<any> {
+    return this.http.delete(`${this.urlRol}${id}`).pipe(
+      catchError(e => {
+        Swal.fire('Error al eliminar', e.error.mensaje, 'error');
         return throwError(e);
       })
     );
