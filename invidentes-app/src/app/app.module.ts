@@ -32,6 +32,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { CargarArchivosComponent } from './cargar-archivos/cargar-archivos.component';
 import { AdminQuienesSomosComponent } from './admin-quienes-somos/admin-quienes-somos.component';
 import { AdministracionComponent } from './administracion/administracion.component';
+import { GestionPqrsComponent } from './gestion-pqrs/gestion-pqrs.component';
+import { GerstionTipoNormatividadComponent } from './gerstion-tipo-normatividad/gerstion-tipo-normatividad.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +52,9 @@ import { AdministracionComponent } from './administracion/administracion.compone
     MenuComponent,
     CargarArchivosComponent,
     AdminQuienesSomosComponent,
-    AdministracionComponent
+    AdministracionComponent,
+    GestionPqrsComponent,
+    GerstionTipoNormatividadComponent
   ],
   imports: [
     BrowserModule,

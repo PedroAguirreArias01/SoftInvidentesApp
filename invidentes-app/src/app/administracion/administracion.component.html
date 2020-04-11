@@ -17,6 +17,11 @@
                         </button>
                     </mat-list-item>
                     <mat-list-item class="my-5">
+                        <button mat-raised-button color="primary" (click)= "controlarTabTipoNormatividad()" >
+                            Tipo Normatividad
+                        </button>
+                    </mat-list-item>
+                    <mat-list-item class="my-5">
                         <button mat-raised-button color="primary" (click)= "controlarTabPqrs()" >
                             PQRS
                         </button>
@@ -37,7 +42,10 @@
     </div>
     <div fxFlex="80%">
         <app-admin-quienes-somos *ngIf="isQuienesSomos"></app-admin-quienes-somos>
-        <usuario *ngIf="isUsuarios"></usuario>
         <app-normativa-form *ngIf="isNormatividad"></app-normativa-form>
+        <app-gestion-pqrs *ngIf="isPqrs"></app-gestion-pqrs>
+        <gerstion-tipo-normatividad *ngIf="isTipoNormatividad"></gerstion-tipo-normatividad>
+        <app-Usuario-form *ngIf="isUsuarios" (isRol)="controlarTabRol($event)"></app-Usuario-form>
+        <gestionar-rol *ngIf="isRol"></gestionar-rol>
     </div>
 </div>

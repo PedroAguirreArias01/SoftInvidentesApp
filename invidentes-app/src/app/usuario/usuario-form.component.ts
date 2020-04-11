@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UsuarioService } from '../services/usuario.service';
 import { UsuarioDTO } from '../dto/usuario.dto';
@@ -37,8 +37,14 @@ export class UsuarioFormComponent implements OnInit {
    * Atributo para paginado de la tabla
    */
   public pageActual: number = 1;
+  /**
+   * lista de usuarios que se encuantran en la base de datos
+   */
+  public usuarios: UsuarioDTO[] = [];
 
-  constructor(private fb: FormBuilder, private Usuarioservice: UsuarioService,private router: Router ) {
+  @Output() isRol = new EventEmitter<boolean>();
+
+  constructor(private fb: FormBuilder, private usuarioservice: UsuarioService, private router: Router) {
     this.gestionarUsuarioForm = this.fb.group({
       nombre: [null, Validators.required],
       apellido: [null, Validators.required],
@@ -67,23 +73,25 @@ export class UsuarioFormComponent implements OnInit {
     this.Usuario.usuario = this.gestionarUsuarioForm.controls.usuario.value;
     this.Usuario.contrasena = this.gestionarUsuarioForm.controls.password.value;
     this.roles.forEach(element => {
-      if(element.nombre === this.gestionarUsuarioForm.controls.rol.value){
+      if (element.nombre === this.gestionarUsuarioForm.controls.rol.value) {
         this.rol = element;
       }
     });
-    console.log(JSON.stringify(this.rol));
+
     this.Usuario.rol = this.rol;
-      this.Usuarioservice.crearUsuario(this.Usuario).subscribe(usuario => {
-          Swal.fire(
-            'Usuario creado con exito!',
-            'success'
-          );
-          this.router.navigate(['colaboradores']);
-        })
+    console.log(JSON.stringify(this.Usuario));
+    this.usuarioservice.crearUsuario(this.Usuario).subscribe(respuesta => {
+      Swal.fire(
+        'Usuario creado con exito!',
+        'success'
+      );
+      this.usuarios.push(respuesta.body)
+      this.limpiarFormulario();
+    })
   }
 
   getRoles() {
-    this.Usuarioservice.getRoles().subscribe(roles => {
+    this.usuarioservice.getRoles().subscribe(roles => {
       this.roles = roles;
     })
   }
@@ -93,11 +101,78 @@ export class UsuarioFormComponent implements OnInit {
   * @author Pedro Aguirre Arias
   */
   private limpiarFormulario(): void {
-    this.gestionarUsuarioForm.controls.nombre.setValue(null);
-    this.gestionarUsuarioForm.controls.apellido.setValue(null);
-    this.gestionarUsuarioForm.controls.email.setValue(null);
-    this.gestionarUsuarioForm.controls.usuario.setValue(null);
-    this.gestionarUsuarioForm.controls.password.setValue(null);
+    this.gestionarUsuarioForm.reset();
+  }
+
+  /**
+   * @description Metodo encargado de consultar todos los usuarios 
+   * que se encuentran en la base de datos
+   * @author Pedro Aguirre Arias <pedro.aguirre@uptc.edu.co>
+   */
+  getUsuarios() {
+    this.usuarioservice.getUsuarios().subscribe(
+      usuarios => {
+        this.usuarios = usuarios
+      }
+    );
+  }
+
+  /**
+     * @description metodo encargado de elimar usuario
+     * @author Pedro Aguirre Arias
+     * @param usuario 
+     */
+  delete(usuario: UsuarioDTO) {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
+      title: 'Estás seguro?',
+      text: "No podrás revertir los cambios!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, bórralo!',
+      cancelButtonText: 'No, cancelar!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.value) {
+        let usuarioAux: UsuarioDTO = usuario;
+        this.usuarioservice.eliminar(usuarioAux.id).subscribe(resultadoDTO => {
+          if (resultadoDTO.exitoso) {
+            swalWithBootstrapButtons.fire(
+              'Eliminado!',
+              'El usuario: ' + usuarioAux.nombre + '  ha sido eliminado.',
+              'success'
+            )
+            this.getUsuarios();
+          } else {
+            swalWithBootstrapButtons.fire(
+              'No se ha eliminado!',
+              'El usuario: ' + usuarioAux.nombre + '  No ha sido eliminado.',
+              'success'
+            )
+          }
+        });
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelado',
+          'Tu usuario esta seguro :)',
+          'error'
+        )
+      }
+    })
+  }
+
+  cambiarEstado(){
+    this.isRol.emit(true);
   }
 
 }

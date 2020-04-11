@@ -1,28 +1,57 @@
-<div class="container">
-    <div class="card">
-        <div class="card-header">
-            Gestionar roles de usuario
-        </div>
-        <div class="card-body">
-            <form [formGroup]="gestionarRolForm">
-                <div class="row">
-                    <div class="col-lg-4"></div>
-                    <div class="col-lg-4">
-                        <mat-form-field appearance="outline">
-                            <mat-label>Nombre del rol</mat-label>
-                            <input class="form-control" matInput placeholder="Nombre del rol" aria-placeholder="Nombres"
-                                aria-label="Nombre del rol" class="form-control" formControlName="nombre">
-                        </mat-form-field>
-                    </div>
+<div class="card">
+    <div class="card-header">
+        Gestionar roles de usuario
+    </div>
+    <div class="card-body">
+        <form [formGroup]="gestionarRolForm">
+            <div class="row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Nombre del rol</mat-label>
+                        <input class="form-control" matInput placeholder="Nombre del rol" aria-placeholder="Nombres"
+                            aria-label="Nombre del rol" class="form-control" formControlName="nombre">
+                    </mat-form-field>
                 </div>
-                <div class="row">
-                    <div class="col-lg-4"></div>
-                    <div class="col-lg-4">
-                        <button matTooltip="Crear rol" mat-raised-button color="primary" aria-label="Crear rol"
-                            (click)="crearRol()">Crear rol</button>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4">
+                    <button matTooltip="Crear rol" mat-raised-button color="primary" aria-label="Crear rol"
+                        (click)="crearRol()">Crear rol</button>
                 </div>
-            </form>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card mt-4">
+    <div class="card-header">
+        <h4>Información de roles de usuario</h4>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>nombre</th>
+                        <th>Aciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let rol of roles | paginate: { itemsPerPage: 7, currentPage: pageActual}">
+                        <th>{{rol.id}}</th>
+                        <th>{{rol.nombre}}</th>
+                        <th>{{rol.descripcion}}</th>
+                        <th>
+                            <button class="btn btn-primary" (click)="editar(rol)">Editar</button>
+                            <button class="btn btn-danger" (click)="eliminar(rol.id)">Eliminar</button>
+                        </th>
+                    </tr>
+                </tbody>
+                <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+            </table>
         </div>
     </div>
 </div>
