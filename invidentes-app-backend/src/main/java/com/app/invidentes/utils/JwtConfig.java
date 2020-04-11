@@ -1,5 +1,10 @@
 package com.app.invidentes.utils;
 
+/**
+ * Clase que contiene los sertificados del token
+ * @author pedro
+ *
+ */
 public class JwtConfig {
 	
 	public static final String LLAVE_SECRETA = "alguna.clave.secreta.12345678";
