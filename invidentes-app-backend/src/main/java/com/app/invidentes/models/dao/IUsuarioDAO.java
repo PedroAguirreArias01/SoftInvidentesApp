@@ -12,5 +12,9 @@ import com.app.invidentes.models.entity.Usuario;
  */
 public interface IUsuarioDAO extends CrudRepository<Usuario, Long>{
 
+	public Usuario findByEmail(String email);
 	
+	public Usuario findByUsuario(String usuario);
+	
+	public Usuario findByContrasena(String contrasena);
 }

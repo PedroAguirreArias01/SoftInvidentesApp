@@ -63,7 +63,7 @@ public class UsuarioRestController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		response.put("mensaje", "El rol ha sido creado con exito");
-		response.put("usuario", rolActual);
+		response.put("body", rolActual);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	
@@ -119,9 +119,6 @@ public class UsuarioRestController {
 	@PostMapping("/usuarios")
 	public ResponseEntity<?> crearUsuario(@RequestBody Usuario usuario) {
 		Usuario usuarioNuevo = null;
-		/*Rol rol  = new Rol();
-		rol = usuario.getRol();
-		rolDao.save(rol);*/
 		Map<String, Object> response = new HashMap<>();
 		try {
 			usuarioNuevo = usuarioService.crearUsuario(usuario);
@@ -132,7 +129,7 @@ public class UsuarioRestController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		response.put("mensaje", "El usuario ha sido creado con exito");
-		response.put("usuario", usuarioNuevo);
+		response.put("body", usuarioNuevo);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	
@@ -164,7 +161,7 @@ public class UsuarioRestController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		response.put("mensaje", "El usuario ha sido actualizado con éxito!");
-		response.put("usuario", usuarioActualizado);
+		response.put("body", usuarioActualizado);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	

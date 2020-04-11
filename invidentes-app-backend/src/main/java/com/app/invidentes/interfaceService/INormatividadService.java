@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.app.invidentes.models.entity.Normatividad;
 import com.app.invidentes.models.entity.ResultadoDTO;
+import com.app.invidentes.models.entity.TipoNormativa;
 
 /**
  * Interfaz que contiene los metodos del crus 
@@ -21,7 +22,7 @@ public interface INormatividadService {
 	/**
 	 * Metodo encargado de crear la Normatividad
 	 */
-	public ResultadoDTO crear(Normatividad normatividad);
+	public Normatividad crear(Normatividad normatividad);
 	
 	/**
 	 * Metodo encarga do de eliminar la Normatividad
@@ -35,4 +36,12 @@ public interface INormatividadService {
 	 * @return
 	 */
 	public Normatividad findById(Long id);
+	
+	/**
+	 * Metodo que obtiene una lista de normatividad por el tipo por ejemplo leyes--> deccretos
+	 * Ordenanzas--Acuerdos dado el id de dicho tipo de normatividad
+	 * @param id
+	 * @return
+	 */
+	public List<Normatividad> obtenerNormatividadPorTipo(TipoNormativa tipoNormativa);
 }

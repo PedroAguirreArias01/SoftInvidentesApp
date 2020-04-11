@@ -30,6 +30,7 @@ import com.app.invidentes.models.dao.IRecursoDAO;
 import com.app.invidentes.models.entity.Persona;
 import com.app.invidentes.models.entity.Pqrs;
 import com.app.invidentes.models.entity.Recurso;
+import com.app.invidentes.models.entity.TipoNormativa;
 import com.app.invidentes.models.entity.Usuario;
 
 @RestController
@@ -59,22 +60,32 @@ public class PqrsRestController {
 	}
 
 	@PostMapping("/pqrs")
-	@ResponseStatus(HttpStatus.CREATED)
-	public Pqrs crear(@RequestBody Pqrs pqrs) {
-		Persona personaActual = pqrs.getPersona();
-		Persona persona = new Persona();
-		persona.setApellido(personaActual.getApellido());
-		persona.setDireccion(personaActual.getDireccion());
-		persona.setNombre(personaActual.getNombre());
-		persona.setNumIdentificacion(personaActual.getNumIdentificacion());
-		personaDAO.save(persona);
-		for (Recurso recurso : listFiles) {
-			this.recursoDAO.save(recurso);
+	public ResponseEntity<?> crear(@RequestBody Pqrs pqrs) {
+		Pqrs pqrsActual = null;
+		Map<String, Object> response = new HashMap<>();
+		try {
+			Persona personaActual = pqrs.getPersona();
+			Persona persona = new Persona();
+			persona.setApellido(personaActual.getApellido());
+			persona.setDireccion(personaActual.getDireccion());
+			persona.setNombre(personaActual.getNombre());
+			persona.setNumIdentificacion(personaActual.getNumIdentificacion());
+			personaDAO.save(persona);
+			for (Recurso recurso : listFiles) {
+				this.recursoDAO.save(recurso);
+			}
+			pqrsActual = mapeoPqrsServicio(pqrs, persona);
+			pqrsActual.setRecursos(listFiles);
+			listFiles.clear();
+		} catch (DataAccessException e) {
+			response.put("mensaje", "Error al realizar la inserción en la base de datos");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		Pqrs pqrsActual = mapeoPqrsServicio(pqrs, persona);
-		pqrsActual.setRecursos(listFiles);
-		listFiles.clear();
-		 return pqrsService.save(pqrsActual);
+		response.put("mensaje", "Su Petición ha sido creado con exito");
+		response.put("body", pqrsActual);
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
+		
 	}
 	
 	/**
@@ -95,20 +106,42 @@ public class PqrsRestController {
 	}
 	
 	@PutMapping("/pqrs/{id}")
-	@ResponseStatus(HttpStatus.CREATED)
-	public Pqrs update(@RequestBody Pqrs pqrs, @PathVariable Long id) {
+	public ResponseEntity<?> update(@RequestBody Pqrs pqrs, @PathVariable Long id) {
 		Pqrs pqrsActual = pqrsService.findById(id);
-		pqrsActual.setDescripcion(pqrs.getDescripcion());
-		pqrsActual.setPersona(pqrs.getPersona());
-		pqrs.setRespuestas(pqrs.getRespuestas());
-		pqrs.setTipoPqrsEnum(pqrs.getTipoPqrsEnum());
-		return this.pqrsService.save(pqrsActual);
+		Map<String, Object> response = new HashMap<>();
+		Pqrs pqrsActualizado = null;
+		if (pqrsActual == null) {
+			response.put("mensaje", "Error: no se pudo editar, el tipo normatividad ID: ".concat(id.toString().concat(" no existe en la base de datos")));
+		}
+		try {
+			pqrsActual.setDescripcion(pqrs.getDescripcion());
+			pqrsActual.setPersona(pqrs.getPersona());
+			pqrs.setRespuestas(pqrs.getRespuestas());
+			pqrs.setTipoPqrsEnum(pqrs.getTipoPqrsEnum());
+			pqrsActualizado = this.pqrsService.save(pqrsActual);
+		} catch (DataAccessException e) {
+			response.put("mensaje", "Error al actualizar en la base de datos!");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		response.put("mensaje", "La información ha sido actualizada con éxito!");
+		response.put("body", pqrsActualizado);
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 
 	@DeleteMapping("/pqrs/{id}")
-	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void delete(Long id) {
-		pqrsService.delete(id);
+	public ResponseEntity<?> delete(Long id) {
+		Map<String, Object> response = new HashMap<>();
+		try {
+			pqrsService.delete(id);
+		} catch (DataAccessException e) {
+			response.put("mensaje", "Error al eliminar la información en la base de datos!");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		response.put("mensaje", "La información ha sido eliminado de la base de datos!");
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+		
 	}
 
 	@GetMapping("/pqrs/{id}")

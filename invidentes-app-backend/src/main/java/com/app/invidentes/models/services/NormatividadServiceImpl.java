@@ -6,11 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.app.invidentes.interfaceService.INormatividadService;
 import com.app.invidentes.models.dao.INormatividadDAO;
 import com.app.invidentes.models.entity.Normatividad;
-import com.app.invidentes.models.entity.ResultadoDTO;
+import com.app.invidentes.models.entity.TipoNormativa;
+
 /**
  * Clase encergada de implementar los metodos del crud
  * @author pedro
@@ -30,9 +30,8 @@ public class NormatividadServiceImpl implements INormatividadService{
 
 	@Override
 	@Transactional
-	public ResultadoDTO crear(Normatividad normatividad) {
-		 normatividadDAO.save(normatividad);
-		 return new ResultadoDTO(true, "Informacion creada con exito");
+	public Normatividad crear(Normatividad normatividad) {
+		 return normatividadDAO.save(normatividad);
 	}
 
 	@Override
@@ -45,6 +44,12 @@ public class NormatividadServiceImpl implements INormatividadService{
 	@Transactional(readOnly = true)
 	public Normatividad findById(Long id) {
 		return normatividadDAO.findById(id).orElse(null);
+	}
+
+	@Override
+	public List<Normatividad> obtenerNormatividadPorTipo(TipoNormativa tipoNormativa) {
+		// TODO Auto-generated method stub
+		return normatividadDAO.findByTipoNormativa(tipoNormativa);
 	}
 
 }

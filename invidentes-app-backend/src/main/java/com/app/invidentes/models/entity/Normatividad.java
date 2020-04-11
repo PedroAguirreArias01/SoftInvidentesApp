@@ -2,16 +2,15 @@ package com.app.invidentes.models.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -52,12 +51,12 @@ public class Normatividad implements Serializable{
 	 */
 	@Column(name="contenido", length = 100000)
 	private String contenido;
+	
 	/**
-	 * Atributo quue representa el tipo de informacion 
+	 * Atributo quue representa el tipo de informacion normativa
 	 */
-	@Column(name="tipo")
-	@Enumerated(value = EnumType.STRING)
-	private TipoNormativaEnum tipoNormativaEnum;
+	@OneToOne(cascade = CascadeType.DETACH)
+	private TipoNormativa tipoNormativa;
 	
 	/**
 	 * Atrbuto que representa el usuario que creo dicha normatividad
@@ -113,14 +112,6 @@ public class Normatividad implements Serializable{
 		this.contenido = contenido;
 	}
 
-	public TipoNormativaEnum getTipoNormativaEnum() {
-		return tipoNormativaEnum;
-	}
-
-	public void setTipoNormativaEnum(TipoNormativaEnum tipoNormativaEnum) {
-		this.tipoNormativaEnum = tipoNormativaEnum;
-	}
-
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -128,4 +119,14 @@ public class Normatividad implements Serializable{
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+
+	public TipoNormativa getTipoNormativa() {
+		return tipoNormativa;
+	}
+
+	public void setTipoNormativa(TipoNormativa tipoNormativa) {
+		this.tipoNormativa = tipoNormativa;
+	}
+	
+	
 }

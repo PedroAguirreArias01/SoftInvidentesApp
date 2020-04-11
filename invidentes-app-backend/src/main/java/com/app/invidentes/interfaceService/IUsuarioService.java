@@ -35,4 +35,6 @@ public interface IUsuarioService {
 	 */
 	public Usuario findById(Long id);
 	
+	public Usuario findByUsuario(String usuario);
+	
 }
