@@ -19,23 +19,21 @@ fxLayout
           <mat-card-title>Iniciar sesión</mat-card-title>
         </mat-card-header>
 
-        <form class="example-form">
+        <form [formGroup]="formLogin">
           <mat-card-content>
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Usuario">
+              <input matInput placeholder="Usuario" formControlName="usuario" autofocus> 
             </mat-form-field>
             <br>
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Contraseña">
+              <input type="password" matInput placeholder="Contraseña" formControlName="contrasena">
             </mat-form-field>
           </mat-card-content>
           <br>
-          <button routerLink="/administracion" mat-raised-button color="primary" class="btn-block">Iniciar sesión</button>
+          <button  mat-raised-button color="primary" class="btn-block" (click)= "login()" >Iniciar sesión</button>
         </form>
         <br>
       </mat-card>
-
-      
     </div>
     <div fxFlex="30%" ></div>
   <!-- </div> -->
