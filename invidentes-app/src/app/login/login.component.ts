@@ -40,6 +40,12 @@ export class LoginComponent implements OnInit {
    * @author Pedro Aguirre Arias <pedro.aguirre@uptc.edu.co>
    */
   ngOnInit() {
+    if(this.authServer.isAuthenticated()){
+      this.router.navigate(['/administracion']);
+      swal.fire('Login', 'Hola '+this.authServer.usuario.usuario+' ya estás autenticado', 'info');
+    }else{
+      swal.fire('Login', 'No estás autenticado!', 'info');
+    }
   }
 
   login(): void{
@@ -51,10 +57,18 @@ export class LoginComponent implements OnInit {
       this.usuario.contrasena = this.formLogin.controls.contrasena.value;
       console.log(this.usuario);
       this.authServer.login(this.usuario).subscribe(respuesta=>{
+        this.authServer.guardarUsuario(respuesta.access_token);
+        this.authServer.guardarToken(respuesta.access_token);
+        let usuario = this.authServer.usuario;
         console.log('respuesta: '+respuesta);
-        this.router.navigate['/administracion'];
-        swal.fire('Login',  'Bienvenido: '+respuesta.username+ ' Administracion Invidentes!','success');
-      });
+        this.router.navigate(['/administracion']);
+        swal.fire('Login',  'Bienvenido: '+usuario.nombre+ ' Administracion Invidentes!','success');
+      }, error => {
+        if(error.status == 400){
+          swal.fire('Error Login', 'Usuario o Contraseña incorrecta!', 'error');
+        }
+      }
+      );
     }
   }
 

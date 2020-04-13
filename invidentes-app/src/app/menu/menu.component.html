@@ -1,88 +1,106 @@
 <div style="height: 100%;">
-    <mat-toolbar color="primary">
-      <mat-toolbar-row>
-        <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
-          <mat-icon>menu</mat-icon>
-        </button>
-        <a href="#" aria-label="AppInvidentes-Boyacá" mat-button><span>Invidentes Boyacá</span></a>
-        <span class="example-spacer"></span>
-        <div fxShow="true" fxHide.lt-md="true">
-          <!-- The following menu items will be hidden on both SM and XS screen sizes -->
-          
-          <a routerLink = "normativaForm" mat-button>
-            <mat-icon>info</mat-icon>
-            Normatividad
-          </a>
-          <a routerLink="pqrsForm" mat-button routerLinkActive="active">
-            <mat-icon>help</mat-icon>
-            PQRS
-          </a>
-          <!-- <a routerLink="/colaboradores" mat-button routerLinkActive="active">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <a href="#" aria-label="AppInvidentes-Boyacá" mat-button><span>Invidentes Boyacá</span></a>
+      <span class="example-spacer"></span>
+      <div fxShow="true" fxHide.lt-md="true">
+        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+
+        <a routerLink="normativaForm" mat-button>
+          <mat-icon>info</mat-icon>
+          Normatividad
+        </a>
+        <a routerLink="pqrsForm" mat-button routerLinkActive="active">
+          <mat-icon>help</mat-icon>
+          PQRS
+        </a>
+        <!-- <a routerLink="/colaboradores" mat-button routerLinkActive="active">
             <mat-icon>people</mat-icon>
             Usuarios
           </a> -->
 
-          <!-- <a href="#" mat-button routerLinkActive="active">
+        <!-- <a href="#" mat-button routerLinkActive="active">
             <mat-icon>notifications</mat-icon>
             Notificaciones
           </a> -->
-          <a routerLink = "/quienesSomos" mat-button routerLinkActive="active">
-            <mat-icon>notifications</mat-icon>
-            Quienes Somos
-          </a>
-          <!-- <a href="#" mat-button>
+        <a routerLink="/quienesSomos" mat-button routerLinkActive="active">
+          <mat-icon>notifications</mat-icon>
+          Quienes Somos
+        </a>
+        <!-- <a href="#" mat-button>
             <mat-icon>message</mat-icon>
             Mensajes
           </a> -->
-          <!-- <a href="#" mat-button>
+        <!-- <a href="#" mat-button>
             <mat-icon>account_box</mat-icon>
             Perfil
           </a> -->
-          <a mat-button routerLink="/login">
-            <mat-icon>input</mat-icon>
-            Iniciar sesión</a>
-        </div>
-      </mat-toolbar-row>
-    </mat-toolbar>
-  
-<!-- versión para movil  -->
+        <a mat-button routerLink="/login" *ngIf="!authService.isAuthenticated()">
+          <mat-icon>input</mat-icon>
+          Iniciar sesión
+        </a>
 
-    <mat-sidenav-container fxFlexFill>
-      <mat-sidenav #sidenav>
-        <mat-nav-list>
-          <a routerLink = "normativaForm" mat-list-item>
-            <mat-icon>info</mat-icon>
-            Normatividad
+        <!-- <a class="dropdown show">
+          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{authService.usuario.usuario}}
           </a>
-          <a routerLink="pqrsForm" mat-list-item>
-            <mat-icon>help</mat-icon>
-            PQRS
-          </a>
-          <!-- <a routerLink="/colaboradores" mat-list-item>
+        
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="#">Cerrar Sesión</a>
+          </div>
+        </a> -->
+
+        <a mat-button (click)= "salir()" *ngIf="authService.isAuthenticated()">
+          <mat-icon>exit_to_app</mat-icon>
+          Cerrar Sesión
+        </a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <!-- versión para movil  -->
+
+  <mat-sidenav-container fxFlexFill>
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+        <a routerLink="normativaForm" mat-list-item>
+          <mat-icon>info</mat-icon>
+          Normatividad
+        </a>
+        <a routerLink="pqrsForm" mat-list-item>
+          <mat-icon>help</mat-icon>
+          PQRS
+        </a>
+        <!-- <a routerLink="/colaboradores" mat-list-item>
             <mat-icon>people</mat-icon>
             Usuarios
           </a> -->
-          <!-- <a href="#" mat-list-item>
+        <!-- <a href="#" mat-list-item>
             <mat-icon>notifications</mat-icon>
             Notificaciones
           </a> -->
-           <a routerLink = "/quienesSomos" mat-list-item>
-            <mat-icon>message</mat-icon>
-            Quienes Somos</a> 
-          <a href="#" mat-list-item>
-            <mat-icon>account_box</mat-icon>
-            Perfil
-          </a>
-          <a mat-button routerLink="/login">
-            <mat-icon>input</mat-icon>
-            Iniciar sesión</a>
-          <a (click)="sidenav.toggle()" mat-list-item>
-            <mat-icon>close</mat-icon> Cerrar
-          </a>
-        </mat-nav-list>
-      </mat-sidenav>
-      <mat-sidenav-content fxFlexFill>
-        <router-outlet></router-outlet>
-      </mat-sidenav-content>
-    </mat-sidenav-container>
-  </div>
+        <a routerLink="/quienesSomos" mat-list-item>
+          <mat-icon>message</mat-icon>
+          Quienes Somos
+        </a>
+        <a href="#" mat-list-item>
+          <mat-icon>account_box</mat-icon>
+          Perfil
+        </a>
+        <a mat-button routerLink="/login">
+          <mat-icon>input</mat-icon>
+          Iniciar sesión
+        </a>
+        <a (click)="sidenav.toggle()" mat-list-item>
+          <mat-icon>close</mat-icon> Cerrar
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
