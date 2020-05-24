@@ -31,9 +31,18 @@ export class UsuarioService {
    */
   constructor(injector: Injector, private http : HttpClient, private router: Router) { }  
 
+  /**
+   * Se valida los codigos genericos de error
+   * @param e codigo de error
+   */
   isNoAutorizado(e): boolean{
-    if(e.status == 401 || e.status == 403){
+    if(e.status == 401){
       this.router.navigate["/login"];
+      return true;
+    }
+    if(e.status == 403){
+      Swal.fire('Error acceso denegado a este recurso', e.error.mensaje, 'warning');
+      this.router.navigate["/paginaPrincipal"];
       return true;
     }
     return false;

@@ -4,7 +4,7 @@ import {Component} from '@angular/core';
  * @author Pedro Aguirre Arias <pedro.aguirre@uptc.edu.co>
  */
 @Component({
-  selector: 'app-header',
+  selector: '<app-header>',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
