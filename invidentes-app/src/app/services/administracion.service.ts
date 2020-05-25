@@ -48,8 +48,6 @@ export class AdministracionService {
    * @param quienesSomos 
    */
   editarQuienesSomos(quienesSomos: QuienesSomos, id: number): Observable<any>{
-    console.log('info: '+quienesSomos+' id: '+id);
-    
     return this.http.put(`${this.urlEndPoint}${id}`, quienesSomos);
   }
 

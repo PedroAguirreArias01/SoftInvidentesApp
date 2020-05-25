@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { RolDTO } from '../dto/rol.dto';
 import { URL_SERVIDOR } from 'src/assets/constantes/configServer';
 import { RouterLink, Router } from '@angular/router';
+import { AuthService } from './auth.service';
 /**
  * @description clase que se encarga de gestionar los  servicios de Usuario
  * @author Pedro Aguirre Arias <pedro.aguirre@uptc.edu.co>
@@ -29,7 +30,11 @@ export class UsuarioService {
    /**
    * @description contructor de la clase
    */
-  constructor(injector: Injector, private http : HttpClient, private router: Router) { }  
+  constructor(injector: Injector, 
+    private http : HttpClient, 
+    private router: Router,
+    private authService: AuthService
+    ) { }  
 
   /**
    * Se valida los codigos genericos de error
@@ -37,6 +42,11 @@ export class UsuarioService {
    */
   isNoAutorizado(e): boolean{
     if(e.status == 401){
+      //si el usuario esta autenticado se cierra la sesion
+      if(this.authService.isAuthenticated){
+        Swal.fire('La sesión ha Expirado!', 'warning');
+        this.authService.salir();
+      }
       this.router.navigate["/login"];
       return true;
     }

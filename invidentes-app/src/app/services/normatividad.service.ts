@@ -19,12 +19,6 @@ export class NormatividadService {
    */
   private urlEndPoint: string = URL_SERVIDOR+'normatividad/';
 
-   httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type':  'application/json'
-    })
-  };
-
   constructor(injector: Injector, private http : HttpClient) {
     
 
@@ -51,7 +45,7 @@ export class NormatividadService {
    * @description Metodo encargado de modificar la informacion repecto a la normatividad
    */
   editar(normatividadDTO: NormatividadDTO): Observable<any> {
-    return this.http.put(`${this.urlEndPoint}${normatividadDTO.id}`, normatividadDTO, this.httpOptions).pipe(
+    return this.http.put(`${this.urlEndPoint}${normatividadDTO.id}`, normatividadDTO).pipe(
       catchError(e => {
         Swal.fire('error',e.error.mensaje, 'error');
         return throwError(e);
@@ -72,7 +66,7 @@ export class NormatividadService {
    * @author Pedro Aguirre Arias <pedro.aguirre@uptc.edu.co>
    */
   getTipoNormatividad(): Observable<any> {
-    return this.http.get(`${this.urlEndPoint}tipoNormatividad`, this.httpOptions).pipe(
+    return this.http.get(`${this.urlEndPoint}tipoNormatividad`, ).pipe(
       catchError(e => {
         Swal.fire('error',e.error.mensaje, 'error');
         return throwError(e);
@@ -85,7 +79,7 @@ export class NormatividadService {
    * @author Pedro Aguirre Arias <pedro.aguirre@uptc.edu.co>
    */
   guardarTipoNormatividad(tipoNormatividad: TipoNormativaDTO): Observable<any> {
-    return this.http.post(`${this.urlEndPoint}tipoNormatividad`, tipoNormatividad, this.httpOptions).pipe(
+    return this.http.post(`${this.urlEndPoint}tipoNormatividad`, tipoNormatividad).pipe(
       catchError(e => {
         Swal.fire('error',e.error.mensaje, 'error');
         return throwError(e);
@@ -98,7 +92,7 @@ export class NormatividadService {
    * @author Pedro Aguirre Arias <pedro.aguirre@uptc.edu.co>
    */
   actualizarTipoNormatividad(tipoNormatividad: TipoNormativaDTO): Observable<any> {
-    return this.http.put(`${this.urlEndPoint}tipoNormatividad/${tipoNormatividad.id}`, tipoNormatividad, this.httpOptions).pipe(
+    return this.http.put(`${this.urlEndPoint}tipoNormatividad/${tipoNormatividad.id}`, tipoNormatividad).pipe(
       catchError(e => {
         Swal.fire('error',e.error.mensaje, 'error');
         return throwError(e);
@@ -111,7 +105,7 @@ export class NormatividadService {
    * @author Pedro Aguirre Arias <pedro.aguirre@uptc.edu.co>
    */
   eliminarTipoNormatividad(id:number): Observable<any> {
-    return this.http.delete(`${this.urlEndPoint}tipoNormatividad/${id}`, this.httpOptions).pipe(
+    return this.http.delete(`${this.urlEndPoint}tipoNormatividad/${id}`).pipe(
       catchError(e => {
         Swal.fire('error', e.error.mensaje, 'error');
         return throwError(e);

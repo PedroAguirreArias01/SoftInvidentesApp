@@ -15,7 +15,7 @@ import { NormativaFormComponent } from './normativa-form/normativa-form.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 //--------------paginado-------------------
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -34,6 +34,10 @@ import { AdminQuienesSomosComponent } from './admin-quienes-somos/admin-quienes-
 import { AdministracionComponent } from './administracion/administracion.component';
 import { GestionPqrsComponent } from './gestion-pqrs/gestion-pqrs.component';
 import { GerstionTipoNormatividadComponent } from './gerstion-tipo-normatividad/gerstion-tipo-normatividad.component';
+import { AuthInterceptor } from './usuario/interceptors/auth.Interceptor';
+
+// se importa el request interseptor
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +75,7 @@ import { GerstionTipoNormatividadComponent } from './gerstion-tipo-normatividad/
   exports: [
     AngularMaterial  
   ],
-  providers: [UsuarioService],
+  providers: [UsuarioService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

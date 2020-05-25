@@ -10,20 +10,21 @@ import { PoliticasComponent } from './politicas/politicas.component';
 import { GestionarRolComponent } from './gestionar-rol/gestionar-rol.component';
 import { LoginComponent } from './login/login.component';
 import { AdministracionComponent } from './administracion/administracion.component';
+import { AuthGuard } from './usuario/guards/auth.guard';
 
 
 const routes: Routes = [
   {path: '', redirectTo: '/paginaPrincipal', pathMatch: 'full'},
   {path: 'paginaPrincipal', component: PaginaPricipalComponent},
-  {path: 'colaboradores', component: UsuarioComponent },
+  {path: 'colaboradores', component: UsuarioComponent, canActivate:[AuthGuard] },
   {path: 'pqrsForm', component: PqrsFormComponent},
-  {path: 'normativaForm', component: NormativaFormComponent},
-  {path: 'cearColaborador', component: UsuarioFormComponent},
+  {path: 'normativaForm', component: NormativaFormComponent, canActivate:[AuthGuard]},
+  {path: 'cearColaborador', component: UsuarioFormComponent, canActivate:[AuthGuard]},
   {path: 'quienesSomos', component: QuienesSomosComponent},
   {path: 'politicas', component: PoliticasComponent},
-  {path: 'gestionarRol', component: GestionarRolComponent},
+  {path: 'gestionarRol', component: GestionarRolComponent, canActivate:[AuthGuard]},
   {path: 'login', component: LoginComponent},
-  {path: 'administracion', component: AdministracionComponent},
+  {path: 'administracion', component: AdministracionComponent, canActivate:[AuthGuard]},
 ]
 
 @NgModule({

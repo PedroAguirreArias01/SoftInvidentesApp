@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UsuarioDTO } from '../dto/usuario.dto';
 import { URL_SERVIDOR } from 'src/assets/constantes/configServer';
+import { RolDTO } from '../dto/rol.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -67,41 +68,57 @@ export class AuthService {
     return null;
   }
 
-   /**
-   * Metodo que verifica que el usuario este autenticado 
-   */
-  isAuthenticated(): boolean{
+  /**
+  * Metodo que verifica que el usuario este autenticado 
+  */
+  isAuthenticated(): boolean {
     let payload = this.obtenerDatosToken(this.token);
-    if(payload != null && payload.user_name && payload.user_name.length >0){
+    if (payload != null && payload.user_name && payload.user_name.length > 0) {
       return true;
     }
     return false;
   }
 
+  /***
+   * Se valida si ese usuario tiene un rol
+   */
+  hasRole(role: RolDTO): boolean {
+    if (this.usuario.rol.includes(role)) {
+      return true;
+    }else{
+      return false;
+    }
+  }
 
   /**
    * Metodo que finaliza la sesion del usuario
    */
-  salir(){
+  salir() {
     this._token = null;
     this._usuario = null;
     sessionStorage.clear();
   }
 
-  public get usuario(): UsuarioDTO{
-    if(this._usuario != null){
+  /**
+   * Metodo get encargado de obtener el usuario logueado
+   */
+  public get usuario(): UsuarioDTO {
+    if (this._usuario != null) {
       return this._usuario;
-    }else if(this._usuario == null && sessionStorage.getItem('usuario') != null){
+    } else if (this._usuario == null && sessionStorage.getItem('usuario') != null) {
       this._usuario = JSON.parse(sessionStorage.getItem('usuario'));
       return this._usuario;
     }
     return new UsuarioDTO();
   }
 
-  public get token(): string{
-    if(this._token != null){
+  /**
+   * Metodo get Encargadod e obtener el token del usuario
+   */
+  public get token(): string {
+    if (this._token != null) {
       return this._token;
-    }else if(this._token == null && sessionStorage.getItem('token') != null){
+    } else if (this._token == null && sessionStorage.getItem('token') != null) {
       this._token = JSON.parse(sessionStorage.getItem('token'));
       return this._token;
     }
