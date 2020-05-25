@@ -69,7 +69,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
     const payLoad = this.authService.obtenerDatosToken(token);
     let now = new Date().getTime() / 1000;
     if (this.authService.isAuthenticated) {
-      if (this.isTokenExpirado()) {
+      if (payLoad.exp < now) {
         this.authService.salir();
         this.router.navigate(['/login'])
         return false;
