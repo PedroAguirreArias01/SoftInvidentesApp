@@ -22,7 +22,13 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/usuarios").permitAll()
+		http.authorizeRequests().antMatchers(HttpMethod.GET,"/normatividad/**","/pqrs/**","/quienSomos/**" ).permitAll()
+		.antMatchers(HttpMethod.POST,"/pqrs/**" ).permitAll()
+		.antMatchers(HttpMethod.POST,"/normatividad/**","/pqrs/**","/quienSomos/**" ).hasAnyRole("Administrador", "Colaborador")
+		.antMatchers(HttpMethod.PUT,"/normatividad/**","/pqrs/**","/quienSomos/**" ).hasAnyRole("Administrador", "Colaborador")
+		.antMatchers(HttpMethod.DELETE,"/normatividad/**","/pqrs/**","/quienSomos/**" ).hasAnyRole("Administrador", "Colaborador")
+		.antMatchers("/api/**").hasRole("Administrador")
+		.antMatchers("/api/**").hasRole("Administrador")
 		.anyRequest().authenticated()
 		.and().cors()
 		.configurationSource(corsConfigurationSource());
@@ -32,7 +38,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration configuration = new CorsConfiguration();
-		configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+		configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200","http://192.168.1.101:4200"));
 		configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
 		configuration.setAllowCredentials(true);
 		configuration.setAllowedHeaders(Arrays.asList("*"));

@@ -80,6 +80,12 @@ public class Pqrs implements Serializable{
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "pqrs_id")
     private List<Recurso> recursos;
+	
+	/**
+	 * Atributo que representa el estado de la pqrs
+	 * si esta publicada o no 
+	 */
+	private Boolean estadoPqrs;
     
     public Pqrs() {
 		// TODO Auto-generated constructor stub
@@ -147,6 +153,14 @@ public class Pqrs implements Serializable{
 
 	public void setRecursos(List<Recurso> recursos) {
 		this.recursos = recursos;
+	}
+	
+	public Boolean getEstadoPqrs() {
+		return estadoPqrs;
+	}
+	
+	public void setEstadoPqrs(Boolean estadoPqrs) {
+		this.estadoPqrs = estadoPqrs;
 	}
 
 	@Override

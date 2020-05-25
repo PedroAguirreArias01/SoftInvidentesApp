@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class TipoNormativa {
 
 	/**
-	 * id que identifica al rol
+	 * id que identifica al tipo normativa
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

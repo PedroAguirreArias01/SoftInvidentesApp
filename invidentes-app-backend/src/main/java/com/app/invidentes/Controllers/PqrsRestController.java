@@ -116,8 +116,9 @@ public class PqrsRestController {
 		try {
 			pqrsActual.setDescripcion(pqrs.getDescripcion());
 			pqrsActual.setPersona(pqrs.getPersona());
-			pqrs.setRespuestas(pqrs.getRespuestas());
-			pqrs.setTipoPqrsEnum(pqrs.getTipoPqrsEnum());
+			pqrsActual.setRespuestas(pqrs.getRespuestas());
+			pqrsActual.setTipoPqrsEnum(pqrs.getTipoPqrsEnum());
+			pqrsActual.setEstadoPqrs(pqrs.getEstadoPqrs());
 			pqrsActualizado = this.pqrsService.save(pqrsActual);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Error al actualizar en la base de datos!");

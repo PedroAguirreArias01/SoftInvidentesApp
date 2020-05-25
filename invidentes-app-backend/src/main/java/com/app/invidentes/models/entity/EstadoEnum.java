@@ -1,14 +1,14 @@
 package com.app.invidentes.models.entity;
 
 /**
- * Clase que determina el estando de un colaborador 
+ * Clase que determina el estando de un usuario 
  * @author pedro
  *
  */
 public enum EstadoEnum {
 
-	ACTIVO("enum.colaborador.activo"), 
-	INACTIVO("enum.colaborador.inactivo");
+	ACTIVO("enum.usuario.activo"), 
+	INACTIVO("enum.usuario.inactivo");
 	/**
 	 * Atributo que contiene la clave del mensaje para la internacionalizacion
 	 */
