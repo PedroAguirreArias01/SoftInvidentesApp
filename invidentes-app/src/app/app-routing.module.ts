@@ -16,15 +16,15 @@ import { AuthGuard } from './usuario/guards/auth.guard';
 const routes: Routes = [
   {path: '', redirectTo: '/paginaPrincipal', pathMatch: 'full'},
   {path: 'paginaPrincipal', component: PaginaPricipalComponent},
-  {path: 'colaboradores', component: UsuarioComponent, canActivate:[AuthGuard] },
+  {path: 'colaboradores', component: UsuarioComponent, canActivate:[AuthGuard], data:{role:"Administrador"} },
   {path: 'pqrsForm', component: PqrsFormComponent},
-  {path: 'normativaForm', component: NormativaFormComponent, canActivate:[AuthGuard]},
-  {path: 'cearColaborador', component: UsuarioFormComponent, canActivate:[AuthGuard]},
+  {path: 'normativaForm', component: NormativaFormComponent, canActivate:[AuthGuard],  data:{role:"Administrador"}},
+  {path: 'cearColaborador', component: UsuarioFormComponent, canActivate:[AuthGuard],  data:{role:"Administrador"}},
   {path: 'quienesSomos', component: QuienesSomosComponent},
   {path: 'politicas', component: PoliticasComponent},
-  {path: 'gestionarRol', component: GestionarRolComponent, canActivate:[AuthGuard]},
+  {path: 'gestionarRol', component: GestionarRolComponent, canActivate:[AuthGuard],  data:{role:"Administrador"}},
   {path: 'login', component: LoginComponent},
-  {path: 'administracion', component: AdministracionComponent, canActivate:[AuthGuard]},
+  {path: 'administracion', component: AdministracionComponent, canActivate:[AuthGuard], data:{role:"Administrador"}},
 ]
 
 @NgModule({

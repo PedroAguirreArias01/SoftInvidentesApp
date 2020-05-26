@@ -55,14 +55,12 @@ export class LoginComponent implements OnInit {
     }else{
       this.usuario.usuario = this.formLogin.controls.usuario.value;
       this.usuario.contrasena = this.formLogin.controls.contrasena.value;
-      console.log(this.usuario);
       this.authServer.login(this.usuario).subscribe(respuesta=>{
         this.authServer.guardarUsuario(respuesta.access_token);
         this.authServer.guardarToken(respuesta.access_token);
         let usuario = this.authServer.usuario;
-        console.log('respuesta: '+respuesta);
-        this.router.navigate(['/administracion']);
         swal.fire('Login',  'Bienvenido: '+usuario.nombre+ ' Administracion Invidentes!','success');
+        this.router.navigate(['/administracion']);
       }, error => {
         if(error.status == 400){
           swal.fire('Error Login', 'Usuario o Contraseña incorrecta!', 'error');

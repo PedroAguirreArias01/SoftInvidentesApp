@@ -6,12 +6,15 @@
       </mat-card-header>
       <mat-card-content>
         <mat-list>
-          <mat-list-item class="my-5">
-            <button mat-raised-button color="primary">
-              Leyes
+          <mat-list-item class="my-5" *ngFor="let item of listaTipoNormativa">
+            <button mat-raised-button 
+            color="primary" 
+            (click)= "buscarNormatividadPorTIpo(item)" 
+            matTooltip="{{item.nombre}}">
+              {{item.nombre}}
             </button>
           </mat-list-item>
-          <mat-list-item class="my-5">
+          <!-- <mat-list-item class="my-5">
             <button mat-raised-button color="primary">
               Decretos
             </button>
@@ -30,7 +33,7 @@
             <button mat-raised-button color="primary">
               Acuerdos
             </button>
-          </mat-list-item>
+          </mat-list-item> -->
         </mat-list>
       </mat-card-content>
     </mat-card>
@@ -38,9 +41,12 @@
   <div fxFlex>
     <mat-card>
       <mat-card-header class="text-primary">
-        <mat-card-title>Leyes</mat-card-title>
+        <mat-card-title>{{opcionSeleccionada}}</mat-card-title>
       </mat-card-header>
-      <mat-card-content>
+      <div *ngIf="normatividad?.length===0" class="alert alert-info">
+        No hay registros en la base de datos!
+      </div>
+      <mat-card-content *ngIf="normatividad?.length>0">
         <mat-card class="example-card" *ngFor="let norma of normatividad;let i=index;">
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>

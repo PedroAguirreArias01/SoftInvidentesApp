@@ -10,25 +10,26 @@
           <!-- The following menu items will be hidden on both SM and XS screen sizes -->
   
           <a routerLink="normativaForm" mat-button>
-            <mat-icon>info</mat-icon>
+            <mat-icon aria-label="Icono Normatividad">info</mat-icon>
             Normatividad
           </a>
           <a routerLink="pqrsForm" mat-button routerLinkActive="active">
-            <mat-icon>help</mat-icon>
+            <mat-icon aria-label="Preguntas queajas reclamos Sugerencias">help</mat-icon>
             PQRS
           </a>
-          <!-- <a routerLink="/colaboradores" mat-button routerLinkActive="active">
-              <mat-icon>people</mat-icon>
-              Usuarios
-            </a> -->
+          
   
           <!-- <a href="#" mat-button routerLinkActive="active">
               <mat-icon>notifications</mat-icon>
               Notificaciones
             </a> -->
           <a routerLink="/quienesSomos" mat-button routerLinkActive="active">
-            <mat-icon>notifications</mat-icon>
+            <mat-icon aria-label="Quienes somos">group</mat-icon>
             Quienes Somos
+          </a>
+          <a routerLink="/administracion" mat-button routerLinkActive="active">
+            <mat-icon aria-label="Example home icon">dashboard</mat-icon>
+            Administración
           </a>
           <!-- <a href="#" mat-button>
               <mat-icon>message</mat-icon>
@@ -39,7 +40,7 @@
               Perfil
             </a> -->
           <a mat-button routerLink="/login" *ngIf="!authService.isAuthenticated()">
-            <mat-icon>input</mat-icon>
+            <mat-icon aria-label="Iniciar sesión">input</mat-icon>
             Iniciar sesión
           </a>
   
@@ -54,7 +55,7 @@
           </a> -->
   
           <a mat-button (click)= "salir()" *ngIf="authService.isAuthenticated()">
-            <mat-icon>exit_to_app</mat-icon>
+            <mat-icon aria-label="Cerrar Sesión">exit_to_app</mat-icon>
             Cerrar Sesión
           </a>
         </div>

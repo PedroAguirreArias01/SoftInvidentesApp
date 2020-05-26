@@ -29,8 +29,6 @@ export class AuthService {
     params.set('grant_type', 'password');
     params.set('username', usuario.usuario);
     params.set('password', usuario.contrasena);
-    console.log(params.toString());
-
     return this.http.post(this.urlEndPoint, params.toString(), this.httpOptions)
   }
 
@@ -72,9 +70,12 @@ export class AuthService {
   * Metodo que verifica que el usuario este autenticado 
   */
   isAuthenticated(): boolean {
-    let payload = this.obtenerDatosToken(this.token);
-    if (payload != null && payload.user_name && payload.user_name.length > 0) {
-      return true;
+    if(sessionStorage.getItem('token') != null){
+      this._token = sessionStorage.getItem('token');
+      let payload = this.obtenerDatosToken(this.token);
+      if (payload != null && payload.user_name && payload.user_name.length > 0) {
+        return true;
+      }
     }
     return false;
   }
@@ -118,7 +119,7 @@ export class AuthService {
   public get token(): string {
     if (this._token != null) {
       return this._token;
-    } else if (this._token == null && sessionStorage.getItem('token') != null) {
+    } else if (sessionStorage.getItem('token') != null) {
       this._token = JSON.parse(sessionStorage.getItem('token'));
       return this._token;
     }

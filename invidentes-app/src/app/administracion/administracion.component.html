@@ -1,37 +1,37 @@
-<div fxLayout fxLayout.xs="column" fxLayoutGap="10px" fxLayoutGap.xs="0">
-    <div fxFlex="20%" fxLayoutAlign="start none">
-        <mat-card>
+<div class="row">
+    <div class="col-sm-3">
+        <mat-card class="contenedorMenu">
             <mat-card-header class="text-primary">
                 <mat-card-title>Administración</mat-card-title>
             </mat-card-header>
             <mat-card-content>
                 <mat-list>
-                    <mat-list-item class="my-5">
+                    <mat-list-item class="my-2">
                         <button mat-raised-button color="primary" (click)= "controlarTabUsuarios()" >
                             Usuarios
                         </button>
                     </mat-list-item>
-                    <mat-list-item class="my-5">
+                    <mat-list-item class="my-2">
                         <button mat-raised-button color="primary" (click)= "controlarTabNormatividad()" >
                             Normatividad
                         </button>
                     </mat-list-item>
-                    <mat-list-item class="my-5">
+                    <mat-list-item class="my-2">
                         <button mat-raised-button color="primary" (click)= "controlarTabTipoNormatividad()" >
                             Tipo Normatividad
                         </button>
                     </mat-list-item>
-                    <mat-list-item class="my-5">
+                    <mat-list-item class="my-2">
                         <button mat-raised-button color="primary" (click)= "controlarTabPqrs()" >
                             PQRS
                         </button>
                     </mat-list-item>
-                    <mat-list-item class="my-5">
+                    <mat-list-item class="my-2">
                         <button mat-raised-button color="primary" (click)= "controlarTabQuienesSomos()" >
                             Quienes Somos
                         </button>
                     </mat-list-item>
-                    <mat-list-item class="my-5">
+                    <mat-list-item class="my-2">
                         <button mat-raised-button color="primary" (click)= "controlarTabNotificaciones()" > 
                             Notificaciones
                         </button>
@@ -40,7 +40,7 @@
             </mat-card-content>
         </mat-card>
     </div>
-    <div fxFlex="80%">
+    <div class="col-sm-9 contenedorMenu" >
         <app-admin-quienes-somos *ngIf="isQuienesSomos"></app-admin-quienes-somos>
         <app-normativa-form *ngIf="isNormatividad"></app-normativa-form>
         <app-gestion-pqrs *ngIf="isPqrs"></app-gestion-pqrs>
@@ -49,6 +49,59 @@
         <gestionar-rol *ngIf="isRol"></gestionar-rol>
     </div>
 </div>
+<!-- 
+
+<div layout="column" >
+    <div flex="20%">
+        <mat-card >
+            <mat-card-header class="text-primary">
+                <mat-card-title>Administración</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-list>
+                    <mat-list-item class="my-2">
+                        <button mat-raised-button color="primary" (click)= "controlarTabUsuarios()" >
+                            Usuarios
+                        </button>
+                    </mat-list-item>
+                    <mat-list-item class="my-2">
+                        <button mat-raised-button color="primary" (click)= "controlarTabNormatividad()" >
+                            Normatividad
+                        </button>
+                    </mat-list-item>
+                    <mat-list-item class="my-2">
+                        <button mat-raised-button color="primary" (click)= "controlarTabTipoNormatividad()" >
+                            Tipo Normatividad
+                        </button>
+                    </mat-list-item>
+                    <mat-list-item class="my-2">
+                        <button mat-raised-button color="primary" (click)= "controlarTabPqrs()" >
+                            PQRS
+                        </button>
+                    </mat-list-item>
+                    <mat-list-item class="my-2">
+                        <button mat-raised-button color="primary" (click)= "controlarTabQuienesSomos()" >
+                            Quienes Somos
+                        </button>
+                    </mat-list-item>
+                    <mat-list-item class="my-2">
+                        <button mat-raised-button color="primary" (click)= "controlarTabNotificaciones()" > 
+                            Notificaciones
+                        </button>
+                    </mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div flex="80%">
+        <app-admin-quienes-somos *ngIf="isQuienesSomos"></app-admin-quienes-somos>
+        <app-normativa-form *ngIf="isNormatividad"></app-normativa-form>
+        <app-gestion-pqrs *ngIf="isPqrs"></app-gestion-pqrs>
+        <gerstion-tipo-normatividad *ngIf="isTipoNormatividad"></gerstion-tipo-normatividad>
+        <app-Usuario-form *ngIf="isUsuarios" (isRol)="controlarTabRol($event)"></app-Usuario-form>
+        <gestionar-rol *ngIf="isRol"></gestionar-rol>
+    </div>
+</div> -->
 
 <!-- <ul class="nav flex-column">
     <li class="nav-item">

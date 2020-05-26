@@ -113,4 +113,17 @@ export class NormatividadService {
     );
   }
 
+  /**
+   * @description metodo encargado de obtener la informacion referente al tipo de normatividad dada
+   * @author Pedro Aguirre Arias <pedro.aguirre@uptc.edu.co>
+   */
+  getNormatividadPorTipo(tipoNormatividad:TipoNormativaDTO): Observable<any> {
+    return this.http.post(`${this.urlEndPoint}tipoNormatividad/`, tipoNormatividad).pipe(
+      catchError(e => {
+        Swal.fire('error', e.error.mensaje, 'error');
+        return throwError(e);
+      })
+    );
+  }
+
 }
