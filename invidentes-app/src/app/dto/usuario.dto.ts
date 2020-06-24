@@ -43,5 +43,5 @@ export class UsuarioDTO {
      * estos pueden ser Administrador, Colaborador, o otro tipo de rol 
      * que se desee crear 
      */
-    public rol: RolDTO[];
+    public rol: RolDTO;
 }
